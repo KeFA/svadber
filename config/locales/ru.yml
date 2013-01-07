@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "адрес уже зарегестирован"
+            password:
+              blank: "не заполнен"
