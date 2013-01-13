@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
+gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3'
@@ -9,6 +11,8 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'spork-rails'
 end
 
 group :production do
