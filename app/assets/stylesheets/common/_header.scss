@@ -1,0 +1,40 @@
+header {
+  @include clearfix();
+  width: 100%;
+  background-color: $defaultDarkGray;
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  @include box-shadow(0 0 2px rgba(0, 0, 0, 0.1));
+  .container {
+    .logo {
+      margin-right: 10%;
+    }
+    a {
+      color: #fff;
+    }
+    nav {
+      display: inline;
+      ul {
+        display: inline;
+        padding: 0;
+        margin: 0;
+        &.personal-nav {
+          float: right;
+        }
+        li {
+          display: inline-block;
+          margin-left: 5px;
+          a {
+            color: #fff;
+            &#registration {
+              border-right: 1px solid #fff;
+              padding-right: 5px;
+            }
+
+          }
+        }
+      }
+
+    }
+  }
+}

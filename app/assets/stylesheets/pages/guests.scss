@@ -1,0 +1,42 @@
+table.guest-list{
+  border-collapse: collapse;
+  margin-top: 30px;
+  thead{
+    tr{
+      th{
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid $defaultDarkGray;
+
+        &.guest-list-full-name-header{
+
+        }
+        &.guest-list-city-header{
+          width: 20%;
+        }
+        &.guest-list-status-header{
+          width: 20%;
+        }
+        &.guest-list-name-header{
+          width: 10%;
+        }
+        &.guest-list-second-name-header{
+          width: 10%;
+        }
+        &.guest-list-middle-name-header{
+          width: 10%;
+        }
+      }
+    }
+  }
+  tbody{
+    tr{
+      td{
+        vertical-align: middle;
+        text-align: left;
+        border: 1px solid $defaultDarkGray;
+      }
+    }
+  }
+
+}

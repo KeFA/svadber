@@ -1,8 +1,31 @@
-<div style="float: right">
-  <% if user_signed_in? %>
-      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
-  <% else %>
-      <%= link_to 'Зарегистрироваться', new_user_registration_path %> |
-      <%= link_to 'Войти', new_user_session_path %>
-  <% end %>
-</div>
+<header>
+  <div class="container">
+    <a class="logo">
+      SVADBER
+    </a>
+    <nav>
+        <% if user_signed_in? %>
+        <ul>
+          <li><a href="checklist.html">Список</a></li>
+          <li><a href="budget.html">Бюджет</a></li>
+          <li><%= link_to 'Гости', guests_path %></li>
+          <li><a href="seating.html">Рассадка</a></li>
+          <li><a href="overnight.html">Ночлег</a></li>
+          <li><a href="cortege.html">Кортеж</a></li>
+        </ul>
+      <% end %>
+      <ul class="personal-nav">
+      <% if user_signed_in? %>
+          <li><%= link_to "#{current_user.email}" %></li>
+          <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Регистрация', new_user_registration_path, id: 'registration' %></li>
+          <li><%= link_to 'Войти', new_user_session_path %></li>
+          <li><a class="icon" id="facebook" href="http://www.facebook.com/Springpad">facebook</a></li>
+          <li><a class="icon" id="twitter" href="http://www.twitter.com/Springpad">twitter</a></li>
+          <li><a class="icon" id="plus" href="https://plus.google.com/u/0/114486085924574381073">plus</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
