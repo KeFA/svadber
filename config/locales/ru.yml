@@ -1,10 +1,20 @@
 ru:
   activerecord:
+    attributes:
+      user:
+        email: 'электронный адрес'
+        password: 'пароль'
+      guest:
+        last_name: 'фамилия'
     errors:
       models:
         user:
           attributes:
             email:
-              taken: "адрес уже зарегестирован"
+              taken: 'уже зарегестирован'
             password:
-              blank: "не заполнен"
+              blank: 'не заполнен'
+        guest:
+          attributes:
+            last_name:
+              blank: 'не может быть пустой'

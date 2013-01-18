@@ -1,5 +1,7 @@
 
 <h1>Список гостей</h1>
+<%= render 'add_guest_form' %>
+
 <table class="guest-list" width="100%">
   <thead>
   <tr>
@@ -28,7 +30,7 @@
         <p class="editable-text"><%= guest.middle_name %></p>
         <input class="hidden" type="text" value="<%= guest.middle_name %>" />
       </td>
-      <td>Минск</td>
+      <td><%= guest.city %></td>
       <td>
         <select>
           <option selected>Жених</option>

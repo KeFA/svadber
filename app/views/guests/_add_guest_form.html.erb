@@ -1,0 +1,28 @@
+<%= form_for @guest do |f| %>
+    <% if f.object.errors.any? %>
+        <div class="alert alert-error">
+          <ul>
+            <% @guest.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.label :last_name, 'Фамилия' %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :first_name, 'Имя' %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :middle_name, 'Отчество' %>
+    <%= f.text_field :middle_name %>
+
+    <%= f.label :city, 'Город' %>
+    <%= f.text_field :city %>
+
+    <%= f.label :status, 'Статус' %>
+    <%= f.text_field :status %>
+
+    <%= f.submit 'Добавить гостя', id: 'add_guest' %>
+<% end %>
