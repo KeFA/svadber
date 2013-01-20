@@ -48,9 +48,11 @@
           <option class="add_new_value">Другой...</option>
         </select>
         <input class="hidden" type="text" placeholder="Введите название статуса" />
+        <i rel="tooltip" title="Удалить" class="icon-remove"></i>
       </td>
     </tr>
   <% end %>
-
   </tbody>
 </table>
+
+<a href="javascript:addGuestToTable();" class="btn btn-success btn-large" id="add-guest"><i class="icon-white icon-plus"></i> Добавить гостя</a>

@@ -56,15 +56,18 @@ input[type="color"]:focus,
 
 
 table{
+  position: relative;
+  margin-bottom: 20px;
   td{
     input{
       margin: 0 !important;
-      width: 98%;
+      width: 100%;
       height: $inputHeight !important;
       padding-left: 0 !important;
     }
     select{
       margin: 0;
+      width: 100%;
     }
     p{
       margin: 0;
@@ -73,6 +76,13 @@ table{
     .editable-text {
       line-height: $inputHeight !important;
       height: $inputHeight;
+      width: 100%;
+    }
+    .icon-remove{
+      position: absolute;
+      margin-top: -20px;
+      right: -20px;
+      cursor: pointer;
     }
   }
 }
