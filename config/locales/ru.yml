@@ -1,26 +1,4 @@
 ru:
-  activerecord:
-    attributes:
-      user:
-        email: "электронный адрес"
-        password: "пароль"
-      guest:
-        last_name: "фамилия"
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              taken: "уже зарегестирован"
-            password:
-              blank: "не заполнен"
-        guest:
-          attributes:
-            last_name:
-              blank: "не может быть пустой"
-  guest_created: "Гость успешно создан"
-  guest_creating_error: "Ошибка при создании гостя"
-
   errors:
     messages:
       expired: "устарела. Пожалуйста, запросите новую"
@@ -76,3 +54,25 @@ ru:
         subject: "Инструкции по восстановлению пароля"
       unlock_instructions:
         subject: "Инструкции по разблокировке учётной записи"
+
+  activerecord:
+    attributes:
+      user:
+        email: "электронный адрес"
+        password: "пароль"
+      guest:
+        last_name: "фамилия"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "уже зарегестирован"
+            password:
+              blank: "не заполнен"
+        guest:
+          attributes:
+            last_name:
+              blank: "не может быть пустой"
+  guest_created: "Гость успешно создан"
+  guest_creating_error: "Ошибка при создании гостя"
