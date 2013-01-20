@@ -72,6 +72,7 @@ table{
     }
     .editable-text {
       line-height: $inputHeight !important;
+      height: $inputHeight;
     }
   }
 }

@@ -15,35 +15,40 @@
 //= require bootstrap
 //= require_tree .
 
+var editableSelect;
+var editableInput;
+var editableContentAfter;
+var editableContentBefore;
+
 $(document).ready(function () {
+
+    $("[rel='tooltip']").tooltip();
+
     $(".editable-text").click(function () {
-        var before = $.trim($(this).html());
-        editEditableText($(this));
+        setTextInTableEditable($(this));
     });
 });
 
 
 /*Edit table content*/
 
-function editEditableText(text) {
-    var editableSelect = $(text).parent().find(".editable-select");
-    var editableInput = $(text).parent().find("input");
+function setTextInTableEditable(text) {
+    editableSelect = $(text).parent().find(".editable-select");
+    editableInput = $(text).parent().find("input");
     $(text).addClass("hidden");
     if ($(editableSelect).length) {
-        editEditableSelect($(editableSelect), $(text));
+        setSelectInTableEditable($(editableSelect), $(text));
     }
     else {
-        var editableContentBefore = $.trim(text.html());
+        editableContentBefore = $.trim(text.html());
         $(editableInput).val(editableContentBefore);
-        $(editableInput).removeClass("hidden");
         rememberContentFromContainer($(text), $(editableInput));
     }
 }
 
-function editEditableSelect(select, text) {
-    $(select).removeClass("hidden").focus();
-    var editableInput = $(select).parent().find("input");
-    rememberContentFromContainer($(text), $(select));
+function setSelectInTableEditable(select, text) {
+    $(select).removeClass("hidden");
+    editableInput = $(select).parent().find("input");
     $(select).change(function () {
         var selectedOption = $(this).find(":selected");
         if ($(selectedOption).hasClass("add_new_value")) {
@@ -59,13 +64,14 @@ function editEditableSelect(select, text) {
 }
 
 function rememberContentFromContainer(text, container){
+    $(text).addClass("hidden");
+    $(container).removeClass("hidden");
     $(container).focus().blur(function () {
-        var editableContentBefore = $.trim($(text).html());
-        var editableContentAfter = $(container).val();
+        editableContentBefore = $.trim($(text).html());
+        editableContentAfter = $(container).val();
         $(text).html(editableContentAfter);
         $(container).addClass("hidden");
         $(text).removeClass("hidden");
-
 
         if (editableContentBefore != editableContentAfter) {
             updateGuest(text, editableContentAfter);

@@ -8,7 +8,7 @@
     <th class="guest-list-number" rowspan="2">№</th>
     <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
     <th class="guest-list-city-header" rowspan="2">Город</th>
-    <th class="guest-list-status-header" rowspan="2">Статус</th>
+    <th class="guest-list-status-header" rowspan="2"><span title="Статусы нужны для списка гостей на каравай" rel="tooltip">Статус</span></th>
   </tr>
   <tr>
     <th class="guest-list-name-header">Фамилия</th>
@@ -25,21 +25,22 @@
       </td>
       <td>
         <p class="editable-text" model-attr="last_name"><%= guest.last_name %></p>
-        <input class="hidden" type="text" value="<%= guest.last_name %>" />
+        <input class="hidden" type="text" placeholder="Введите фамилию" value="<%= guest.last_name %>" />
       </td>
       <td>
         <p class="editable-text"><%= guest.first_name %></p>
-        <input class="hidden" type="text" value="<%= guest.first_name %>" />
+        <input class="hidden" type="text" placeholder="Введите имя" value="<%= guest.first_name %>" />
       </td>
       <td>
         <p class="editable-text"><%= guest.middle_name %></p>
-        <input class="hidden" type="text" value="<%= guest.middle_name %>" />
+        <input class="hidden" type="text" placeholder="Введите отчество" value="<%= guest.middle_name %>" />
       </td>
       <td><%= guest.city %></td>
       <td>
         <p class="editable-text">Название статуса</p>
         <select class="editable-select hidden">
-          <option selected>Жених</option>
+          <option selected disabled="disabled">Выберите статус</option>
+          <option>Жених</option>
           <option>Невеста</option>
           <option>Родители жениха</option>
           <option>Родители невесты</option>
