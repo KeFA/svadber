@@ -15,22 +15,53 @@
 //= require bootstrap
 //= require_tree .
 
-$(document).ready(function(){
+$(document).ready(function () {
     $(".editable-text").click(function () {
-        editTableContent($(this));
+        editEditableText($(this));
     });
 });
 
+
 /*Edit table content*/
-function editTableContent(text) {
-    var editableContentBefore = $.trim(text.html());
-    var editableInput = $(text).next();
-    $(editableInput).val(editableContentBefore);
+
+function editEditableText(text) {
+    var editableSelect = $(text).parent().find(".editable-select");
+    var editableInput = $(text).parent().find("input");
     $(text).addClass("hidden");
-    $(editableInput).removeClass("hidden").focus().blur(function () {
-        var editableContentAfter = $(editableInput).val();
+    if ($(editableSelect).length) {
+        editEditableSelect($(editableSelect), $(text));
+    }
+    else {
+        var editableContentBefore = $.trim(text.html());
+        $(editableInput).val(editableContentBefore);
+        $(editableInput).removeClass("hidden");
+        rememberContentFromContainer($(text), $(editableInput));
+    }
+}
+
+function editEditableSelect(select, text) {
+    $(select).removeClass("hidden").focus();
+    var editableInput = $(select).parent().find("input");
+    rememberContentFromContainer($(text), $(select));
+    $(select).change(function () {
+        var selectedOption = $(this).find(":selected");
+        if ($(selectedOption).hasClass("add_new_value")) {
+            $(select).addClass("hidden");
+            $(text).addClass("hidden");
+            $(editableInput).removeClass("hidden");
+            rememberContentFromContainer($(text), $(editableInput));
+        }
+        else{
+            rememberContentFromContainer($(text), $(select));
+        }
+    });
+}
+
+function rememberContentFromContainer(text, container){
+    $(container).focus().blur(function () {
+        var editableContentAfter = $(container).val();
         $(text).html(editableContentAfter);
-        $(editableInput).addClass("hidden");
+        $(container).addClass("hidden");
         $(text).removeClass("hidden");
     });
 }
