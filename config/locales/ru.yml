@@ -76,3 +76,8 @@ ru:
               blank: "не может быть пустой"
   guest_created: "Гость успешно создан"
   guest_creating_error: "Ошибка при создании гостя"
+  fiance: "Жених"
+  fiancee: "Невеста"
+  witnesses: "Свидетели"
+  fiance_parents: "Родители жениха"
+  fiancee_parents: "Родители невесты"

@@ -1,6 +1,4 @@
-
 <h1>Список гостей</h1>
-<%= render 'add_guest_form' %>
 
 <table class="guest-list" width="100%">
   <thead>
@@ -8,7 +6,8 @@
     <th class="guest-list-number" rowspan="2">№</th>
     <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
     <th class="guest-list-city-header" rowspan="2">Город</th>
-    <th class="guest-list-status-header" rowspan="2"><span title="Статусы нужны для списка гостей на каравай" rel="tooltip">Статус</span></th>
+    <th class="guest-list-status-header" rowspan="2">
+      <span title="Статусы нужны для списка гостей на каравай" rel="tooltip">Статус</span></th>
   </tr>
   <tr>
     <th class="guest-list-name-header">Фамилия</th>
@@ -17,42 +16,8 @@
   </tr>
   </thead>
   <tbody>
-  <% @guests.each_with_index do |guest, index | %>
-    <tr>
-      <td>
-        <input type="hidden" class="guest-update-url" value="<%= guest_path(guest)%>" />
-        <%= index + 1 %>
-      </td>
-      <td>
-        <p class="editable-text" model-attr="last_name"><%= guest.last_name %></p>
-        <input class="hidden" type="text" placeholder="Введите фамилию" value="<%= guest.last_name %>" />
-      </td>
-      <td>
-        <p class="editable-text"><%= guest.first_name %></p>
-        <input class="hidden" type="text" placeholder="Введите имя" value="<%= guest.first_name %>" />
-      </td>
-      <td>
-        <p class="editable-text"><%= guest.middle_name %></p>
-        <input class="hidden" type="text" placeholder="Введите отчество" value="<%= guest.middle_name %>" />
-      </td>
-      <td><%= guest.city %></td>
-      <td>
-        <p class="editable-text">Название статуса</p>
-        <select class="editable-select hidden">
-          <option selected disabled="disabled">Выберите статус</option>
-          <option>Жених</option>
-          <option>Невеста</option>
-          <option>Родители жениха</option>
-          <option>Родители невесты</option>
-          <option>Свидетели</option>
-          <option class="add_new_value">Другой...</option>
-        </select>
-        <input class="hidden" type="text" placeholder="Введите название статуса" />
-        <i rel="tooltip" title="Удалить" class="icon-remove"></i>
-      </td>
-    </tr>
-  <% end %>
+    <%= render guests %>
   </tbody>
 </table>
 
-<a href="javascript:addGuestToTable();" class="btn btn-success btn-large" id="add-guest"><i class="icon-white icon-plus"></i> Добавить гостя</a>
+<%= link_to raw('<i class="icon-white icon-plus"></i> Добавить гостя'), new_guest_path, class: 'btn btn-success btn-large', id: 'add-guest', remote: true %>

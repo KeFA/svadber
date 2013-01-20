@@ -3,25 +3,33 @@ class GuestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @guest = new_guest
-    @guests = guests
   end
 
-  def create
-    @guest = new_guest(params[:guest])
-    if @guest.save
-      flash.now[:info] = t(:guest_created)
-      @guest = new_guest
-    else
-      flash.now[:error] = t(:guest_creating_error)
+  def new
+    @guest = guests.create
+    respond_to do |format|
+      format.html { redirect_to guests_path }
+      format.js
     end
-    @guests = guests
-    render :index
   end
 
   def update
-    guest = guests.find(params[:id])
-    guest.update_attributes(params[:guest])
+    guest = guests.find_by_id(params[:id])
+    if guest
+      guest.update_attributes(params[:guest])
+    end
     render nothing: true
+  end
+
+  def destroy
+    guest = guests.find_by_id(params[:id])
+    if guest
+      guest.destroy
+    end
+
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
   end
 end

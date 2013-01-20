@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require tables
-//= require guests
 //= require_tree .
 
