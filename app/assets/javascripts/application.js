@@ -17,6 +17,7 @@
 
 $(document).ready(function () {
     $(".editable-text").click(function () {
+        var before = $.trim($(this).html());
         editEditableText($(this));
     });
 });
@@ -59,9 +60,24 @@ function editEditableSelect(select, text) {
 
 function rememberContentFromContainer(text, container){
     $(container).focus().blur(function () {
+        var editableContentBefore = $.trim($(text).html());
         var editableContentAfter = $(container).val();
         $(text).html(editableContentAfter);
         $(container).addClass("hidden");
         $(text).removeClass("hidden");
+
+
+        if (editableContentBefore != editableContentAfter) {
+            updateGuest(text, editableContentAfter);
+        }
+    });
+}
+
+function updateGuest(text, editableContentAfter) {
+    var update_url = $(text).parents('tr').find('.guest-update-url').val();
+    var guest_attr_to_update = 'guest[' + $(text).attr('model-attr') + ']';
+    $.ajax({
+        url: update_url + '?' + guest_attr_to_update + '=' + editableContentAfter,
+        type: 'PUT'
     });
 }

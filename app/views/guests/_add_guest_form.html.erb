@@ -1,5 +1,5 @@
-<%= form_for @guest do |f| %>
-    <% if f.object.errors.any? %>
+<%= form_tag guests_path, remote: true do %>
+    <% if @guest.errors.any? %>
         <div class="alert alert-error">
           <ul>
             <% @guest.errors.full_messages.each do |msg| %>
@@ -9,20 +9,23 @@
         </div>
     <% end %>
 
-    <%= f.label :last_name, 'Фамилия' %>
-    <%= f.text_field :last_name %>
+    <%= label :guest, :last_name, 'Фамилия' %>
+    <%= text_field :guest, :last_name %>
 
-    <%= f.label :first_name, 'Имя' %>
-    <%= f.text_field :first_name %>
+    <%= label :guest, :first_name, 'Имя' %>
+    <%= text_field :guest, :first_name %>
 
-    <%= f.label :middle_name, 'Отчество' %>
-    <%= f.text_field :middle_name %>
+    <%= label :guest, :middle_name, 'Отчество' %>
+    <%= text_field :guest, :middle_name %>
 
-    <%= f.label :city, 'Город' %>
-    <%= f.text_field :city %>
+    <%= label :guest, :city, 'Город' %>
+    <%= text_field :guest, :city %>
 
-    <%= f.label :status, 'Статус' %>
-    <%= f.text_field :status %>
+    <%= label :guest, :status, 'Статус' %>
+    <%= text_field :guest, :status %>
 
-    <%= f.submit 'Добавить гостя', id: 'add_guest' %>
+    <%= submit_tag 'Добавить гостя', id: 'add_guest' %>
 <% end %>
+
+
+<%= link_to 'Add new guest', url: guests_path, remote: true %>

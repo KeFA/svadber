@@ -2,5 +2,5 @@ Svadber::Application.routes.draw do
   root to: 'home#index'
 
   devise_for :users
-  resources :guests, only: [:index, :create, :show]
+  resources :guests, only: [:index, :create, :show, :update]
 end

@@ -20,10 +20,11 @@
   <% @guests.each_with_index do |guest, index | %>
     <tr>
       <td>
+        <input type="hidden" class="guest-update-url" value="<%= guest_path(guest)%>" />
         <%= index + 1 %>
       </td>
       <td>
-        <p class="editable-text"><%= guest.last_name %></p>
+        <p class="editable-text" model-attr="last_name"><%= guest.last_name %></p>
         <input class="hidden" type="text" value="<%= guest.last_name %>" />
       </td>
       <td>
