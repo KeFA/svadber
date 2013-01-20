@@ -5,6 +5,7 @@
 <table class="guest-list" width="100%">
   <thead>
   <tr>
+    <th class="guest-list-number" rowspan="2">№</th>
     <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
     <th class="guest-list-city-header" rowspan="2">Город</th>
     <th class="guest-list-status-header" rowspan="2">Статус</th>
@@ -16,8 +17,11 @@
   </tr>
   </thead>
   <tbody>
-  <% @guests.each do |guest| %>
+  <% @guests.each_with_index do |guest, index | %>
     <tr>
+      <td>
+        <%= index + 1 %>
+      </td>
       <td>
         <p class="editable-text"><%= guest.last_name %></p>
         <input class="hidden" type="text" value="<%= guest.last_name %>" />
@@ -32,12 +36,16 @@
       </td>
       <td><%= guest.city %></td>
       <td>
-        <select>
+        <p class="editable-text">Название статуса</p>
+        <select class="editable-select hidden">
           <option selected>Жених</option>
           <option>Невеста</option>
           <option>Родители жениха</option>
           <option>Родители невесты</option>
+          <option>Свидетели</option>
+          <option class="add_new_value">Другой...</option>
         </select>
+        <input class="hidden" type="text" placeholder="Введите название статуса" />
       </td>
     </tr>
   <% end %>

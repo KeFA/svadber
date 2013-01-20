@@ -8,6 +8,10 @@ table.guest-list{
         text-align: center;
         border: 1px solid $defaultDarkGray;
 
+        &.guest-list-number{
+          width: 2%;
+        }
+
         &.guest-list-full-name-header{
 
         }
