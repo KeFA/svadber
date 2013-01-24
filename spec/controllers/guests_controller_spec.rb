@@ -23,9 +23,11 @@ describe GuestsController do
 
   describe 'updating a guest via ajax' do
     it 'should update a guest' do
-      xhr :put, :update, {id: guest.id, guest: {last_name: 'Rudzko'}}
+      xhr :put, :update, {id: guest.id, guest: {first_name: 'Maryia', last_name: 'Rudzko', city: 'Mozyr'}}
       guest.reload
+      guest.first_name.should == 'Maryia'
       guest.last_name.should == 'Rudzko'
+      guest.city.should == 'Mozyr'
     end
 
     it 'should allow to create a guest only for current wedding' do

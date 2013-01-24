@@ -16,7 +16,22 @@
     <p class="editable-text" model-attr="middle_name"><%= guest.middle_name %></p>
     <input class="hidden" type="text" placeholder="Введите отчество" value="<%= guest.middle_name %>"/>
   </td>
-  <td><%= guest.city %></td>
+  <td>
+    <p class="editable-text" model-attr="status"><%= guest.city %></p>
+    <select class="editable-select hidden">
+      <% guest_cities.each do |city| %>
+          <% unless city.empty? %>
+              <% if guest.city == city %>
+                  <option selected="selected"><%= city %></option>
+              <% else %>
+                  <option><%= city %></option>
+              <% end %>
+          <% end %>
+      <% end %>
+      <option class="add_new_value">Другой...</option>
+    </select>
+    <input class="hidden" type="text" placeholder="Введите название статуса"/>
+  </td>
   <td>
     <p class="editable-text" model-attr="status"><%= guest.status %></p>
     <select class="editable-select hidden">
