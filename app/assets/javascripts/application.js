@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require tables
 //= require_tree .
+//= require jquery.editable-select.js
 
