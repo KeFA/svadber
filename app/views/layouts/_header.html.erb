@@ -7,7 +7,7 @@
         <% if user_signed_in? %>
         <ul>
           <li><a href="checklist.html">Список</a></li>
-          <li><a href="budget.html">Бюджет</a></li>
+          <li><%= link_to 'Бюджет', budget_path %></li>
           <li><%= link_to 'Гости', guests_path %></li>
           <li><a href="seating.html">Рассадка</a></li>
           <li><a href="overnight.html">Ночлег</a></li>

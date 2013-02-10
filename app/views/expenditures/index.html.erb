@@ -1,0 +1,16 @@
+<h1>Бюджет</h1>
+<table class="expenditures-list" width="100%">
+  <thead>
+  <tr>
+    <th class="">Описание</th>
+    <th class="">Сумма</th>
+    <th class="">Оплачено</th>
+    <th class="">Осталось</th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @expenditures %>
+  </tbody>
+</table>
+
+<%= link_to 'Добавить статью расхода', expenditures_path, remote: true, class: 'btn btn-success', method: :post %>

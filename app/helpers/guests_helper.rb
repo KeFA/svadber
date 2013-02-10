@@ -3,10 +3,6 @@ module GuestsHelper
     current_user.wedding.guests
   end
 
-  def new_guest(params = {})
-    guests.build(params)
-  end
-
   def guest_cities
     cities = guests.collect { |guest| guest.city or '' }
     cities.uniq.sort

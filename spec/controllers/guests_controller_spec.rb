@@ -1,14 +1,11 @@
 describe GuestsController do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:wedding) { user.weddings.create }
-  let(:guest) { FactoryGirl.create(:guest, last_name: 'Sinkevich', wedding_id: wedding.id) }
-  let(:guest_from_other_wedding) { FactoryGirl.create(:guest, last_name: 'lorem', wedding_id: wedding.id + 1) }
+  let(:guest) { FactoryGirl.create(:guest, last_name: 'Sinkevich') }
+  let(:guest_from_other_wedding) { FactoryGirl.create(:guest, last_name: 'lorem', wedding_id: guest.wedding.id + 1) }
 
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]
-    sign_in user
-    guest.save
-    guest_from_other_wedding.save
+    @user = guest.wedding.user
+    sign_in @user
   end
 
   describe 'creating a guest via ajax' do
@@ -17,7 +14,7 @@ describe GuestsController do
     end
 
     it 'should create guest for current user' do
-      expect { xhr :post, :new }.to change(user.wedding.guests, :count).by(1)
+      expect { xhr :post, :new }.to change(@user.wedding.guests, :count).by(1)
     end
   end
 
@@ -38,11 +35,13 @@ describe GuestsController do
   end
 
   describe 'delete a guest via ajax' do
+    puts User.all.map { |user| user.email }
     it 'should delete a guest' do
       expect { xhr :delete, :destroy, id: guest.id }.to change(Guest, :count).by(-1)
     end
 
     it 'should allow to delete a guest only for current wedding' do
+      guest_from_other_wedding
       expect { xhr :delete, :destroy, id: guest_from_other_wedding.id }.to change(Guest, :count).by(0)
     end
   end

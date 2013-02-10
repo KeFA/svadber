@@ -9,6 +9,13 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'rack-mini-profiler'
+end
+
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -28,3 +35,4 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'turbolinks'

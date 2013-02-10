@@ -1,0 +1,19 @@
+<tr>
+  <input type="hidden" class="model_update_url" value="<%= expenditure_path(expenditure) %>" />
+  <input type="hidden" class="model_name" value="expenditure"/>
+  <td model-attr="description">
+    <p class="editable-text"><%= expenditure.description %></p>
+    <input class="hidden" type="text" placeholder="Описание" value="<%= expenditure.description %>">
+  </td>
+  <td model-attr="cost">
+    <p class="editable-text"><%= expenditure.cost %></p>
+    <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" value="<%= expenditure.cost %>"/>
+  </td>
+  <td model-attr="paid">
+    <p class="editable-text"><%= expenditure.paid %></p>
+    <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" value="<%= expenditure.paid %>"/>
+  </td>
+  <td>
+    <p class="remain_to_paid"><%= expenditure.remain_to_paid %></p>
+  </td>
+</tr>

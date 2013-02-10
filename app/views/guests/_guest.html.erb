@@ -1,6 +1,7 @@
 <tr>
+  <input type="hidden" class="model_update_url" value="<%= guest_path(guest) %>"/>
+  <input type="hidden" class="model_name" value="guest"/>
   <td>
-    <input type="hidden" class="guest-update-url" value="<%= guest_path(guest) %>"/>
     <% index ||= guest_counter %>
     <%= index + 1 %>
   </td>

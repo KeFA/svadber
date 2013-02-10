@@ -4,7 +4,6 @@ var editableContentBefore;
 
 $(document).ready(function () {
     $("[rel='tooltip']").tooltip();
-
 });
 
 $(document).on("click", ".editable-text", function () {
@@ -13,6 +12,10 @@ $(document).on("click", ".editable-text", function () {
 
 $(document).on("mouseenter", "[rel='tooltip']", function () {
     $(this).tooltip();
+});
+
+$(document).on("change", "table input", function () {
+    updateModel(this, $(this).val().trim());
 });
 
 function setTextInTableEditable(text) {
@@ -32,5 +35,16 @@ function rememberContentFromContainer(text, container) {
         $(text).html(editableContentAfter);
         $(container).addClass("hidden");
         $(text).removeClass("hidden");
+    });
+}
+
+
+function updateModel(text, editableContentAfter) {
+    var update_url = $(text).parents('tr').find('.model_update_url').val();
+    var model_name = $(text).parents('tr').find('.model_name').val();
+    var model_attr_to_update = model_name + '[' + $(text).parent('td').attr('model-attr') + ']';
+    $.ajax({
+        url: update_url + '?' + model_attr_to_update + '=' + editableContentAfter,
+        type: 'PUT'
     });
 }
