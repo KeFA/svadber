@@ -1,0 +1,4 @@
+var tr = $('#' + <%= @expenditure.id %>).parents('tr');
+var cost = tr.find("[model-attr='cost']").find('input').val();
+var paid = tr.find("[model-attr='paid']").find('input').val();
+tr.find('.remain_to_paid').html(<%= @expenditure.remain_to_paid %>);

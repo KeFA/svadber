@@ -11,11 +11,12 @@ class ExpendituresController < ApplicationController
   end
 
   def update
-    expenditure = expenditures.find_by_id(params[:id])
-    if expenditure
-      expenditure.update_attributes(params[:expenditure])
+    @expenditure = expenditures.find_by_id(params[:id])
+    if @expenditure
+      @expenditure.update_attributes(params[:expenditure])
+    else
+      render :nothing
     end
-    render nothing: true
   end
 
   private
