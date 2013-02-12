@@ -1,6 +1,8 @@
 class ExpendituresController < ApplicationController
+  include ApplicationHelper
+
   def index
-    @expenditures = current_user.wedding.expenditures
+    @expenditures = current_wedding.expenditures
   end
 
   def create
@@ -15,12 +17,12 @@ class ExpendituresController < ApplicationController
     if @expenditure
       @expenditure.update_attributes(params[:expenditure])
     else
-      render :nothing
+      render nothing: true
     end
   end
 
   private
   def expenditures
-    current_user.wedding.expenditures
+    current_wedding.expenditures
   end
 end

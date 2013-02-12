@@ -2,3 +2,6 @@ var tr = $('#' + <%= @expenditure.id %>).parents('tr');
 var cost = tr.find("[model-attr='cost']").find('input').val();
 var paid = tr.find("[model-attr='paid']").find('input').val();
 tr.find('.remain_to_paid').html(<%= @expenditure.remain_to_paid %>);
+$('#budget_cost').html(<%= @expenditure.wedding.budget_cost %>);
+$('#budget_paid').html(<%= @expenditure.wedding.budget_paid %>);
+$('#budget_to_pay').html(<%= @expenditure.wedding.budget_to_pay %>);

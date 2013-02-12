@@ -19,12 +19,13 @@ describe ExpendituresController do
 
 
   describe 'updating expenditure via ajax' do
-    let(:expenditure) { FactoryGirl.create(:expenditure) }
+    let(:expenditure) { @user.wedding.expenditures.create }
 
     it 'should update en expenditure' do
-      xhr :put, :update, {id: expenditure.id, expenditure: {description: 'new description'}}
+      new_desc = 'new description'
+      xhr :put, :update, {id: expenditure.id, expenditure: {description: new_desc}}
       expenditure.reload
-      expenditure.description.should == 'new description'
+      expenditure.description.should == new_desc
     end
   end
 end
