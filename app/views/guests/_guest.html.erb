@@ -18,17 +18,8 @@
     <input class="hidden" type="text" placeholder="Введите отчество" value="<%= guest.middle_name %>"/>
   </td>
   <td model-attr="city">
-    <select class="editable-select" style="width: 250px;">
-      <% guest_cities.each do |city| %>
-          <% unless city.nil? %>
-              <% if guest.city == city %>
-                  <option selected="selected"><%= city %></option>
-              <% else %>
-                  <option><%= city %></option>
-              <% end %>
-          <% end %>
-      <% end %>
-    </select>
+    <p class="editable-text"><%= guest.city %></p>
+    <input class="hidden" type="text" placeholder="Введите отчество" value="<%= guest.city %>"/>
   </td>
   <td model-attr="status">
     <select class="editable-select" style="width: 250px;">

@@ -39,7 +39,6 @@ class GuestsController < ApplicationController
 
   private
   def init_page_vars
-    @cities = guest_cities
     @statuses = guest_statuses
   end
 end
