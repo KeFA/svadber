@@ -5,18 +5,18 @@
   <tr>
     <th class="guest-list-number" rowspan="2">№</th>
     <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
-    <th class="guest-list-city-header" rowspan="2">Город</th>
+    <th class="guest-list-city-header" rowspan="2"><%= sortable 'city', 'Город' %></th>
     <th class="guest-list-status-header" rowspan="2">
       <span title="Статусы нужны для списка гостей на каравай" rel="tooltip">Статус</span></th>
   </tr>
   <tr>
-    <th class="guest-list-name-header">Фамилия</th>
+    <th class="guest-list-name-header"><%= sortable 'last_name', 'Фамилия' %></th>
     <th class="guest-list-second-name-header">Имя</th>
     <th class="guest-list-middle-name-header">Отчество</th>
   </tr>
   </thead>
   <tbody>
-    <%= render guests %>
+    <%= render @guests %>
   </tbody>
 </table>
 
