@@ -1,4 +1,8 @@
 module GuestsHelper
+  def guests
+    current_user.wedding.guests
+  end
+
   def guest_statuses
     statuses = @guests.collect { |guest| guest.status or '' }
     statuses << t(:fiance) << t(:fiancee) << t(:witnesses) << t(:fiance_parents) << t(:fiancee_parents)

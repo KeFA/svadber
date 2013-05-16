@@ -3,8 +3,7 @@ class GuestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @guests = current_user.wedding.guests.order(sort_column + ' ' + sort_order)
-    @statuses = guest_statuses
+    init_page_vars
   end
 
   def new
@@ -41,5 +40,10 @@ class GuestsController < ApplicationController
   private
   def sort_column
     Guest.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
+  def init_page_vars
+    @guests = guests.order(sort_column + ' ' + sort_order)
+    @statuses = guest_statuses
   end
 end
