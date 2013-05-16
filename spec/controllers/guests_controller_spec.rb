@@ -35,12 +35,12 @@ describe GuestsController do
   end
 
   describe 'delete a guest via ajax' do
-    puts User.all.map { |user| user.email }
     it 'should delete a guest' do
       expect { xhr :delete, :destroy, id: guest.id }.to change(Guest, :count).by(-1)
     end
 
     it 'should allow to delete a guest only for current wedding' do
+      #hack to load guest
       guest_from_other_wedding
       expect { xhr :delete, :destroy, id: guest_from_other_wedding.id }.to change(Guest, :count).by(0)
     end
