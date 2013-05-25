@@ -4,6 +4,7 @@ class Wedding < ActiveRecord::Base
   belongs_to :user
   has_many :guests, dependent: :destroy
   has_many :expenditures, dependent: :destroy
+  has_many :check_items, dependent: :destroy
 
   validates :user_id, presence: true
 

@@ -1,0 +1,18 @@
+<h1>Список дел</h1>
+
+
+<% if @check_items.any? %>
+    <table class="checklist" width="100%">
+      <thead>
+      <tr>
+        <th class=""><%= sortable 'done', 'Выполнено?' %></th>
+        <th class=""><%= sortable 'description', 'Описание' %></th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render @check_items %>
+      </tbody>
+    </table>
+<% end %>
+
+<%= link_to 'Добавить', checklist_path, remote: true, class: 'btn btn-success', method: :post %>

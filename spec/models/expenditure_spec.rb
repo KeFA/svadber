@@ -5,7 +5,7 @@ describe Expenditure do
   subject { expenditure }
 
   it { should be_valid }
-  it { should respond_to(:remain_to_paid) }
+  it { should respond_to :remain_to_paid }
   it 'should calculate balance to pay' do
     expenditure.cost = 500
     expenditure.paid = 200

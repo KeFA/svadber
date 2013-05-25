@@ -25,4 +25,8 @@ FactoryGirl.define do
     sequence(:cost) { |n| n * 1000 }
     description 'description'
   end
+
+  factory :check_item do
+    wedding
+  end
 end
