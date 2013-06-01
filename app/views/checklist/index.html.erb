@@ -1,8 +1,7 @@
 <h1>Список дел</h1>
 
-
 <% if @check_items.any? %>
-    <table class="checklist" width="100%">
+    <table id="check_items" class="common_table">
       <thead>
       <tr>
         <th class=""><%= sortable 'done', 'Выполнено?' %></th>
@@ -10,9 +9,9 @@
       </tr>
       </thead>
       <tbody>
-        <%= render @check_items %>
+        <%= render collection: @check_items, partial: '/checklist/check_item' %>
       </tbody>
     </table>
 <% end %>
 
-<%= link_to 'Добавить', checklist_path, remote: true, class: 'btn btn-success', method: :post %>
+<%= link_to 'Добавить', checklist_index_path, remote: true, class: 'btn btn-success', method: :post %>

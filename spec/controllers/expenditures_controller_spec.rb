@@ -1,6 +1,6 @@
 describe ExpendituresController do
   let(:wedding) { FactoryGirl.create(:wedding) }
-  let(:expenditure) { wedding.expenditures.create }
+  let!(:expenditure) { wedding.expenditures.create }
   let(:expenditure_from_other_wedding) { FactoryGirl.create(:expenditure, wedding_id: wedding.id + 1) }
 
   before do
@@ -31,8 +31,6 @@ describe ExpendituresController do
 
   describe 'delete an expenditure via ajax' do
     it 'should delete an expenditure' do
-      #hack to load expenditure
-      expenditure
       expect { xhr :delete, :destroy, id: expenditure.id }.to change(Expenditure, :count).by(-1)
     end
 

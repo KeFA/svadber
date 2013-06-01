@@ -7,4 +7,5 @@ Svadber::Application.routes.draw do
   resources :checklist, path: '/checklist', only: [:create]
   match '/budget', to: 'expenditures#index'
   match '/checklist', to: 'checklist#index'
+  match '/checklist', to: 'checklist#destroy', via: :delete
 end

@@ -1,6 +1,6 @@
 describe GuestsController do
   let(:guest) { FactoryGirl.create(:guest, last_name: 'Sinkevich') }
-  let(:guest_from_other_wedding) { FactoryGirl.create(:guest, last_name: 'lorem', wedding_id: guest.wedding.id + 1) }
+  let!(:guest_from_other_wedding) { FactoryGirl.create(:guest, last_name: 'lorem', wedding_id: guest.wedding.id + 1) }
 
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]
@@ -40,8 +40,6 @@ describe GuestsController do
     end
 
     it 'should allow to delete a guest only for current wedding' do
-      #hack to load guest
-      guest_from_other_wedding
       expect { xhr :delete, :destroy, id: guest_from_other_wedding.id }.to change(Guest, :count).by(0)
     end
   end
