@@ -8,4 +8,5 @@ Svadber::Application.routes.draw do
   match '/budget', to: 'expenditures#index'
   match '/checklist', to: 'checklist#index'
   match '/checklist', to: 'checklist#destroy', via: :delete
+  match '/checklist', to: 'checklist#update', via: :put
 end

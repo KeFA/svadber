@@ -18,4 +18,12 @@ describe ChecklistController do
       expect { xhr :delete, :destroy, id: check_item.id }.to change(@user.wedding.check_items, :count).by(-1)
     end
   end
+
+  describe 'update check item' do
+    it 'should update check item for current user' do
+      xhr :put, :update, id: check_item.id, check_item: {description: 'new description'}
+      check_item.reload
+      check_item.description.should == 'new description'
+    end
+  end
 end

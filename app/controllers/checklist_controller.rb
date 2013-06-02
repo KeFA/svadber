@@ -14,6 +14,14 @@ class ChecklistController < ApplicationController
     end
   end
 
+  def update
+    check_item = check_items.find_by_id(params[:id])
+    if check_item
+      check_item.update_attributes(params[:check_item])
+    end
+    render nothing: true
+  end
+
   def destroy
     check_item = check_items.find_by_id(params[:id])
     if check_item
@@ -23,7 +31,7 @@ class ChecklistController < ApplicationController
 
     respond_to do |format|
       format.html {render :index}
-      #format.js
+      format.js
     end
   end
 
