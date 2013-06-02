@@ -3,7 +3,7 @@ class ChecklistController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @check_items = check_items
+    @check_items = check_items.order(sort_column + ' ' + sort_order)
   end
 
   def create
@@ -38,5 +38,9 @@ class ChecklistController < ApplicationController
   private
   def check_items
     current_user.wedding.check_items
+  end
+
+  def sort_column
+    CheckItem.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 end

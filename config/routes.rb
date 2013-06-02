@@ -4,9 +4,6 @@ Svadber::Application.routes.draw do
   devise_for :users
   resources :guests, only: [:index, :new, :update, :destroy]
   resources :expenditures, only: [:create, :update, :destroy]
-  resources :checklist, path: '/checklist', only: [:create]
+  resources :checklist, only: [:index, :create, :update, :destroy]
   match '/budget', to: 'expenditures#index'
-  match '/checklist', to: 'checklist#index'
-  match '/checklist', to: 'checklist#destroy', via: :delete
-  match '/checklist', to: 'checklist#update', via: :put
 end
