@@ -14,7 +14,7 @@ describe 'Checklist page' do
   end
 
   describe 'index page' do
-    before { visit checklist_index_path }
+    before { visit checklist_path }
 
     it 'should contain all check items' do
       25.times do |i|
