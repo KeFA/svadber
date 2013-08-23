@@ -1,5 +1,4 @@
 class Expenditure < ActiveRecord::Base
-  attr_accessible :cost, :paid, :description, :wedding_id
   belongs_to :wedding
 
   validates :wedding_id, presence: true

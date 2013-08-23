@@ -1,6 +1,6 @@
 class ChecklistController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @check_items = check_items.order(sort_column + ' ' + sort_order)
@@ -17,7 +17,7 @@ class ChecklistController < ApplicationController
   def update
     check_item = check_items.find_by_id(params[:id])
     if check_item
-      check_item.update_attributes(params[:check_item])
+      check_item.update_attributes(check_item_params)
     end
     render nothing: true
   end
@@ -36,11 +36,15 @@ class ChecklistController < ApplicationController
   end
 
   private
-  def check_items
-    current_user.wedding.check_items
-  end
+    def check_items
+      current_user.wedding.check_items
+    end
 
-  def sort_column
-    CheckItem.column_names.include?(params[:sort]) ? params[:sort] : 'id'
-  end
+    def sort_column
+      CheckItem.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+    end
+
+    def check_item_params
+      params.require(:check_item).permit(:description, :done, :wedding_id)
+    end
 end

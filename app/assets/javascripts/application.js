@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require tables
-//= require turbolinks
 //= require_tree .
 //= require jquery.editable-select.js
 

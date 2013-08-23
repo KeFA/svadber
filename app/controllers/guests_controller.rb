@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
   include GuestsHelper
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     init_page_vars
@@ -18,7 +18,7 @@ class GuestsController < ApplicationController
   def update
     guest = guests.find_by_id(params[:id])
     if guest
-      guest.update_attributes(params[:guest])
+      guest.update_attributes(guest_params)
       init_page_vars
     end
     render nothing: true
@@ -38,12 +38,16 @@ class GuestsController < ApplicationController
   end
 
   private
-  def sort_column
-    Guest.column_names.include?(params[:sort]) ? params[:sort] : 'id'
-  end
+    def sort_column
+      Guest.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+    end
 
-  def init_page_vars
-    @guests = guests.order(sort_column + ' ' + sort_order)
-    @statuses = guest_statuses
-  end
+    def init_page_vars
+      @guests = guests.order(sort_column + ' ' + sort_order)
+      @statuses = guest_statuses
+    end
+
+    def guest_params
+      params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status, :wedding_id)
+    end
 end

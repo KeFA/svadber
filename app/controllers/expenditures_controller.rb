@@ -1,6 +1,6 @@
 class ExpendituresController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     init_expenditures
@@ -16,7 +16,7 @@ class ExpendituresController < ApplicationController
   def update
     @expenditure = expenditures.find_by_id(params[:id])
     if @expenditure
-      @expenditure.update_attributes(params[:expenditure])
+      @expenditure.update_attributes(expenditure_params)
     else
       render nothing: true
     end
@@ -36,22 +36,26 @@ class ExpendituresController < ApplicationController
   end
 
   private
-  def init_expenditures
-    if sort_column != 'remain_to_paid'
-      @expenditures = expenditures.order(sort_column + ' ' + sort_order)
-    else
-      @expenditures = expenditures.sort { |a, b| a.remain_to_paid <=> b.remain_to_paid }
-      if sort_order == 'desc'
-        @expenditures.reverse!
+    def init_expenditures
+      if sort_column != 'remain_to_paid'
+        @expenditures = expenditures.order(sort_column + ' ' + sort_order)
+      else
+        @expenditures = expenditures.sort { |a, b| a.remain_to_paid <=> b.remain_to_paid }
+        if sort_order == 'desc'
+          @expenditures.reverse!
+        end
       end
     end
-  end
 
-  def expenditures
-    current_wedding.expenditures
-  end
+    def expenditures
+      current_wedding.expenditures
+    end
 
-  def sort_column
-    Expenditure.column_names.include?(params[:sort]) || params[:sort] == 'remain_to_paid' ? params[:sort] : 'id'
-  end
+    def sort_column
+      Expenditure.column_names.include?(params[:sort]) || params[:sort] == 'remain_to_paid' ? params[:sort] : 'id'
+    end
+
+    def expenditure_params
+      params.require(:expenditure).permit(:cost, :paid, :description, :wedding_id)
+    end
 end

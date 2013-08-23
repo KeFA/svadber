@@ -17,6 +17,6 @@
   <td>
     <p class="remain_to_paid"><%= expenditure.remain_to_paid %></p>
     <%= link_to raw('<i rel="tooltip" title="Удалить" class="icon-remove"></i>'), expenditure_path(expenditure), method: :delete, remote: true,
-        confirm: 'Вы уверены, что хотите удалить статью расходов?' %>
+        data: {confirm: 'Вы уверены, что хотите удалить статью расходов?'} %>
   </td>
 </tr>

@@ -45,6 +45,6 @@ function updateModel(text, editableContentAfter) {
     var model_attr_to_update = model_name + '[' + $(text).parent('td').attr('model-attr') + ']';
     $.ajax({
         url: update_url + '?' + model_attr_to_update + '=' + editableContentAfter,
-        type: 'PUT'
+        type: 'PATCH'
     });
 }
