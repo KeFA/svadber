@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130520175120) do
+ActiveRecord::Schema.define(version: 20130825202328) do
 
   create_table "check_items", force: true do |t|
     t.string   "description"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20130520175120) do
   end
 
   add_index "guests", ["wedding_id"], name: "index_guests_on_wedding_id"
+
+  create_table "todos", force: true do |t|
+    t.boolean  "done"
+    t.string   "description"
+    t.integer  "wedding_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "todos", ["wedding_id"], name: "index_todos_on_wedding_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

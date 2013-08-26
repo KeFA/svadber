@@ -1,0 +1,8 @@
+<div ng-controller="TodosCtrl">
+  <ul ng-repeat="item in items">
+    <li>
+      <input type="checkbox" ng-checked="item.done"/>
+      {{ item.description }}
+    </li>
+  </ul>
+</div>

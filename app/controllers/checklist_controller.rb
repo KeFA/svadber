@@ -4,6 +4,11 @@ class ChecklistController < ApplicationController
 
   def index
     @check_items = check_items.order(sort_column + ' ' + sort_order)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @check_items }
+    end
   end
 
   def create
