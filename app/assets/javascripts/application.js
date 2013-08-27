@@ -17,5 +17,6 @@
 //= require jquery.editable-select.js
 //= require angular
 //= require angular-resource
+//= require underscore
 //= require_tree .
 
