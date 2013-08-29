@@ -8,4 +8,5 @@ Svadber::Application.routes.draw do
   resources :todos, except: [:new, :edit, :show]
   get '/budget' => 'expenditures#index'
   get '/todolist' => 'svadber#todos'
+  get '/seating' => 'svadber#seating'
 end

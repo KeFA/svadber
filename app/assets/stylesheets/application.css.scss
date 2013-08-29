@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.editable-select.css
+ *= require jquery.ui.all
  */
 
 @import "bootstrap";
@@ -21,5 +22,7 @@
 
 @import "common/header";
 @import "common/footer";
+
 @import "pages/guests";
+@import "pages/seating";
 

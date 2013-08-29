@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20130825202328) do
     t.string   "description"
     t.boolean  "done"
     t.integer  "wedding_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "expenditures", force: true do |t|
     t.integer  "wedding_id"
     t.integer  "cost",        default: 0
     t.string   "description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "paid",        default: 0
   end
 
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
     t.string   "middle_name"
     t.string   "city"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "wedding_id"
   end
 
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
 
   create_table "weddings", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "weddings", ["user_id"], name: "index_weddings_on_user_id"
