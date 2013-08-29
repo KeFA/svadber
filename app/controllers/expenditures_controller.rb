@@ -2,8 +2,10 @@ class ExpendituresController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
 
+  respond_to :json
+
   def index
-    init_expenditures
+    respond_with expenditures.as_json
   end
 
   def create
@@ -17,9 +19,8 @@ class ExpendituresController < ApplicationController
     @expenditure = expenditures.find_by_id(params[:id])
     if @expenditure
       @expenditure.update_attributes(expenditure_params)
-    else
-      render nothing: true
     end
+    render nothing: true
   end
 
   def destroy
@@ -56,6 +57,6 @@ class ExpendituresController < ApplicationController
     end
 
     def expenditure_params
-      params.require(:expenditure).permit(:cost, :paid, :description, :wedding_id)
+      params.require(:expenditure).permit(:cost, :paid, :description)
     end
 end

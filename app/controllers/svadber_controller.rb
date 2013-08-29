@@ -4,4 +4,7 @@ class SvadberController < ApplicationController
 
   def todos
   end
+
+  def budget
+  end
 end
