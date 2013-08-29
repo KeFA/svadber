@@ -33,12 +33,12 @@
           </td>
           <td>
             <p class="remain_to_paid">{{ expenditure.cost - expenditure.paid }}</p>
-            <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить"></i>
+            <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeExpenditure(expenditure)"></i>
           </td>
         </tr>
     </tbody>
   </table>
 
-  <%= link_to 'Добавить статью расхода', expenditures_path, remote: true, class: 'btn btn-success', method: :post %>
+  <button class="btn btn-success" ng-click="addExpenditure()">Добавить статью расходов</button>
 </div>
 
