@@ -2,60 +2,39 @@ class ExpendituresController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
 
+  respond_to :json
+
   def index
-    init_expenditures
+    respond_with expenditures.as_json
   end
 
   def create
-    @expenditure = expenditures.create
-    respond_to do |format|
-      format.js
-    end
+    expenditure = expenditures.create
+    respond_with expenditure
   end
 
   def update
     @expenditure = expenditures.find_by_id(params[:id])
     if @expenditure
       @expenditure.update_attributes(expenditure_params)
-    else
-      render nothing: true
     end
+    render nothing: true
   end
 
   def destroy
     expenditure = expenditures.find_by_id(params[:id])
     if expenditure
       expenditure.destroy
-      init_expenditures
     end
-
-    respond_to do |format|
-      format.html { render :index }
-      format.js
-    end
+    render nothing: true
   end
 
   private
-    def init_expenditures
-      if sort_column != 'remain_to_paid'
-        @expenditures = expenditures.order(sort_column + ' ' + sort_order)
-      else
-        @expenditures = expenditures.sort { |a, b| a.remain_to_paid <=> b.remain_to_paid }
-        if sort_order == 'desc'
-          @expenditures.reverse!
-        end
-      end
-    end
-
     def expenditures
       current_wedding.expenditures
     end
 
-    def sort_column
-      Expenditure.column_names.include?(params[:sort]) || params[:sort] == 'remain_to_paid' ? params[:sort] : 'id'
-    end
-
     def expenditure_params
-      params.require(:expenditure).permit(:cost, :paid, :description, :wedding_id)
+      params.require(:expenditure).permit(:cost, :paid, :description)
     end
 end

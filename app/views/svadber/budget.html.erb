@@ -1,0 +1,44 @@
+<div ng-controller="BudgetCtrl">
+  <h1>Расходы</h1>
+  К оплате: <span id='budget_cost'><%= current_wedding.budget_cost %></span>
+  Уплачено: <span id="budget_paid"><%= current_wedding.budget_paid %></span>
+  Оплатить осталось: <span id="budget_to_pay"><%= current_wedding.budget_to_pay %></span>
+  <table id="expenditures" class="common_table">
+    <thead>
+    <tr>
+      <th class=""><%= sortable 'description', 'Описание' %></th>
+      <th class=""><%= sortable 'cost', 'Сумма' %></th>
+      <th class=""><%= sortable 'paid', 'Оплачено' %></th>
+      <th class=""><%= sortable 'remain_to_paid', 'Осталось' %></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="expenditure in expenditures">
+          <input type="hidden" id="{{ expenditure.id }}" />
+          <input type="hidden" class="model_name" value="expenditure"/>
+          <td model-attr="description">
+            <p class="editable-text">{{ expenditure.description }}</p>
+            <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
+                   ng-blur="updateExpenditure(expenditure)">
+          </td>
+          <td model-attr="cost">
+            <p class="editable-text">{{ expenditure.cost }}</p>
+            <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
+                   ng-blur="updateExpenditure(expenditure)"/>
+          </td>
+          <td model-attr="paid">
+            <p class="editable-text">{{ expenditure.paid }}</p>
+            <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
+                   ng-blur="updateExpenditure(expenditure)"/>
+          </td>
+          <td>
+            <p class="remain_to_paid">{{ expenditure.cost - expenditure.paid }}</p>
+            <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeExpenditure(expenditure)"></i>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" ng-click="addExpenditure()">Добавить статью расходов</button>
+</div>
+

@@ -5,6 +5,9 @@ class SvadberController < ApplicationController
   def todos
   end
 
+  def budget
+  end
+
   def seating
   end
 end
