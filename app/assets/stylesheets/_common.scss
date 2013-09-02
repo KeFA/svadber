@@ -85,14 +85,14 @@ table {
   }
 
   th {
-    .current {
+    .sort {
       padding-right: 12px;
       background-repeat: no-repeat;
       background-position: right center;;
-      &.asc {
+      &.desc-false {
         background-image: url(/assets/up_arrow.gif);
       }
-      &.desc {
+      &.desc-true {
         background-image: url(/assets/down_arrow.gif)
       }
     }

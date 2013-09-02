@@ -8,18 +8,6 @@ class Wedding < ActiveRecord::Base
 
   after_create :init_expenditures
 
-  def budget_cost
-    expenditures.map(&:cost).inject(:+)
-  end
-
-  def budget_paid
-    expenditures.map(&:paid).inject(:+)
-  end
-
-  def budget_to_pay
-    budget_cost - budget_paid
-  end
-
   private
   def init_expenditures
     expenditures.create
