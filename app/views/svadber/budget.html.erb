@@ -1,8 +1,8 @@
 <div ng-controller="BudgetCtrl">
   <h1>Расходы</h1>
-  К оплате: <span id='budget_cost'><%= current_wedding.budget_cost %></span>
-  Уплачено: <span id="budget_paid"><%= current_wedding.budget_paid %></span>
-  Оплатить осталось: <span id="budget_to_pay"><%= current_wedding.budget_to_pay %></span>
+  К оплате: <span id='budget_cost'>{{ totalCost() }}</span>
+  Уплачено: <span id="budget_paid">{{ totalPaid() }}</span>
+  Оплатить осталось: <span id="budget_to_pay">{{ totalRemainToPay() }}</span>
   <table id="expenditures" class="common_table">
     <thead>
     <tr>

@@ -50,6 +50,17 @@ app.directive('ngBlur', ['$parse', ($parse) ->
     column: 'description'
     descending: false
 
+  $scope.totalCost = ->
+    _.reduce(_.map($scope.expenditures, (exp) -> exp.cost), (a, b) -> a + b
+    0)
+
+  $scope.totalPaid = ->
+    _.reduce(_.map($scope.expenditures, (exp) -> exp.paid), (a, b) -> a + b
+    0)
+
+  $scope.totalRemainToPay = ->
+    $scope.totalCost() - $scope.totalPaid()
+
   $scope.updateExpenditure = (expenditure) ->
 #    expenditure.$update() doesn' work: it sets content-type: application/xml but should application/json
     $http.put("/expenditures/#{expenditure.id}", expenditure: expenditure)

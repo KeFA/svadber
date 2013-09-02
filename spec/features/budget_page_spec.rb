@@ -22,6 +22,7 @@ describe 'Budget page' do
     it { should have_content 'expenditure 1' }
     it { should have_content 'expenditure 2' }
     it { should_not have_content 'expenditure from other user' }
+    #todo: move these test to js
     it { should have_content ": #{@wedding.budget_cost}" }
     it { should have_content ": #{@wedding.budget_paid}" }
     it { should have_content ": #{@wedding.budget_to_pay}" }
