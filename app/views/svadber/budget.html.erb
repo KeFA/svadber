@@ -6,14 +6,16 @@
   <table id="expenditures" class="common_table">
     <thead>
     <tr>
-      <th class=""><%= sortable 'description', 'Описание' %></th>
-      <th class=""><%= sortable 'cost', 'Сумма' %></th>
-      <th class=""><%= sortable 'paid', 'Оплачено' %></th>
-      <th class=""><%= sortable 'remain_to_paid', 'Осталось' %></th>
+      <th class="">
+        <a href="" ng-click="changeSortOrder('description')" ng-class="getColumnClass('description')">Описание</a>
+      </th>
+      <th class=""><a href="" ng-click="changeSortOrder('cost')" ng-class="getColumnClass('cost')">Сумма</a></th>
+      <th class=""><a href="" ng-click="changeSortOrder('paid')" ng-class="getColumnClass('paid')">Оплачено</a></th>
+      <th class=""><a href="" ng-click="changeSortOrder('remain_to_paid')" ng-class="getColumnClass('remain_to_paid')">Осталось</a></th>
     </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="expenditure in expenditures">
+        <tr ng-repeat="expenditure in expenditures | orderBy:sort.column:sort.descending">
           <input type="hidden" id="{{ expenditure.id }}" />
           <input type="hidden" class="model_name" value="expenditure"/>
           <td model-attr="description">
@@ -24,15 +26,15 @@
           <td model-attr="cost">
             <p class="editable-text">{{ expenditure.cost }}</p>
             <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
-                   ng-blur="updateExpenditure(expenditure)"/>
+                   ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
           </td>
           <td model-attr="paid">
             <p class="editable-text">{{ expenditure.paid }}</p>
             <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
-                   ng-blur="updateExpenditure(expenditure)"/>
+                   ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
           </td>
           <td>
-            <p class="remain_to_paid">{{ expenditure.cost - expenditure.paid }}</p>
+            <p class="remain_to_paid">{{ expenditure.remain_to_paid }}</p>
             <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeExpenditure(expenditure)"></i>
           </td>
         </tr>

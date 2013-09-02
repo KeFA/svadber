@@ -46,6 +46,10 @@ app.directive('ngBlur', ['$parse', ($parse) ->
 
   $scope.expenditures = Expenditure.query()
 
+  $scope.sort =
+    column: 'description'
+    descending: false
+
   $scope.updateExpenditure = (expenditure) ->
 #    expenditure.$update() doesn' work: it sets content-type: application/xml but should application/json
     $http.put("/expenditures/#{expenditure.id}", expenditure: expenditure)
@@ -60,3 +64,18 @@ app.directive('ngBlur', ['$parse', ($parse) ->
       $scope.expenditures = _.reject($scope.expenditures, (item) -> item.id == expenditure.id)
     )
 
+  $scope.updateRemainToPaid = (expenditure) ->
+    expenditure.remain_to_paid = expenditure.cost - expenditure.paid
+
+  $scope.changeSortOrder = (sortColumn) ->
+    if sortColumn == $scope.sort.column
+      $scope.sort.descending = !$scope.sort.descending
+    else
+      $scope.sort.column = sortColumn
+      $scope.sort.descending = false
+
+  $scope.getColumnClass = (column) ->
+    if column == $scope.sort.column
+      "sort desc-#{$scope.sort.descending}"
+    else
+      ""
