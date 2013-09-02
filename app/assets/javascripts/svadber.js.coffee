@@ -51,12 +51,14 @@ app.directive('ngBlur', ['$parse', ($parse) ->
     descending: false
 
   $scope.totalCost = ->
-    _.reduce(_.map($scope.expenditures, (exp) -> exp.cost), (a, b) -> a + b
-    0)
+    totalCost = 0
+    _.each($scope.expenditures, (exp) -> totalCost += exp.cost)
+    totalCost
 
   $scope.totalPaid = ->
-    _.reduce(_.map($scope.expenditures, (exp) -> exp.paid), (a, b) -> a + b
-    0)
+    totalPaid = 0
+    _.each($scope.expenditures, (exp) -> totalPaid += exp.paid)
+    totalPaid
 
   $scope.totalRemainToPay = ->
     $scope.totalCost() - $scope.totalPaid()
