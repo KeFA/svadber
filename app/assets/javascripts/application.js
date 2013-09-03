@@ -14,11 +14,10 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require bootstrap
-//= require tables
-//= require seating.js
 //= require jquery.editable-select.js
-//= require angular
-//= require angular-resource
 //= require underscore
-//= require_tree .
+//= require guests
+//= require seating
+//= require svadber
+//= require tables
 
