@@ -26,7 +26,7 @@ FactoryGirl.define do
     description 'description'
   end
 
-  factory :check_item do
+  factory :todo do
     wedding
   end
 end

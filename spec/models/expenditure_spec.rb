@@ -5,10 +5,9 @@ describe Expenditure do
   subject { expenditure }
 
   it { should be_valid }
-  it { should respond_to :remain_to_paid }
-  it 'should calculate balance to pay' do
+  it 'add remain_to_paid to its json' do
     expenditure.cost = 500
     expenditure.paid = 200
-    expenditure.remain_to_paid.should == 500 - 200
+    expenditure.as_json[:remain_to_paid].should == 500 - 200
   end
 end
