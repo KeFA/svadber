@@ -18,6 +18,7 @@
 //= require underscore
 //= require guests
 //= require seating
-//= require svadber
 //= require tables
+//= require app
+//= require_tree ./controllers
 
