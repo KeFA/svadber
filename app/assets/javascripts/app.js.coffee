@@ -1,12 +1,11 @@
 app = angular.module('Svadber', ['ngResource'])
 
 app.factory "Todo", ["$resource", ($resource) ->
-  $resource("/todos/:id:format", {id: "@id"})
+  $resource("/todos/:id:format", {id: "@id"}, {update: {method: "PATCH"}})
 ]
 
 app.factory "Expenditure", ["$resource", ($resource) ->
-  $resource("/expenditures/:id:format", {id: "@id"}, {update: {method: "PATCH"}
-  })
+  $resource("/expenditures/:id:format", {id: "@id"}, {update: {method: "PATCH"}})
 ]
 
 app.directive('ngBlur', ['$parse', ($parse) ->

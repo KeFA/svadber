@@ -13,6 +13,14 @@ class TodosController < ApplicationController
     respond_with todo
   end
 
+  def update
+    todo = todos.find_by_id(params[:id])
+    if todo
+      todo.update_attributes(todo_params)
+    end
+    render nothing: true
+  end
+
   def destroy
     todo = todos.find_by_id(params[:id])
     if todo

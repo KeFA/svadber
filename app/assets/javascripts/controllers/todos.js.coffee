@@ -12,6 +12,10 @@
       $scope.addTodoText = ''
     )
 
+  $scope.updateTodo = (todo) ->
+    todo.done = not todo.done
+    Todo.update(id: todo.id, done: todo.done)
+
   $scope.removeTodo = (todoIdToRemove) ->
     Todo.remove({id: todoIdToRemove}, ->
       $scope.items = _.reject($scope.items, (item) ->

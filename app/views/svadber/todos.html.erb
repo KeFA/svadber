@@ -5,7 +5,7 @@
   </form>
   <ul ng-repeat="item in items">
     <li>
-      <input type="checkbox" ng-checked="item.done"/>
+      <input type="checkbox" ng-checked="item.done" ng-click="updateTodo(item)"/>
       {{ item.description }}
       <button ng-click="removeTodo(item.id)">Удалить</button>
     </li>
