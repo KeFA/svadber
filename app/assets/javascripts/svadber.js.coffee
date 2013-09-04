@@ -65,7 +65,12 @@ app.directive('ngBlur', ['$parse', ($parse) ->
 
   $scope.updateExpenditure = (expenditure) ->
 #    expenditure.$update() doesn' work: it sets content-type: application/xml but should application/json
-    $http.put("/expenditures/#{expenditure.id}", expenditure: expenditure)
+    $http.put("/expenditures/#{expenditure.id}",
+      expenditure:
+        description: expenditure.description
+        cost: expenditure.cost
+        paid: expenditure.paid
+    )
 
   $scope.addExpenditure = ->
     Expenditure.save({}, (newExpenditure) ->
