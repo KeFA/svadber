@@ -1,0 +1,16 @@
+.seating-panel-chair {
+  width: 48px;
+  height: 48px;
+  border: 1px solid gray;
+  background: lightgray;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  .seating-quest-icon {
+    position: relative;
+    margin-top: -7px;
+    margin-left: -7px;
+  }
+}
