@@ -5,7 +5,7 @@ class ExpendituresController < ApplicationController
   respond_to :json
 
   def index
-    respond_with expenditures.as_json
+    respond_with expenditures
   end
 
   def create

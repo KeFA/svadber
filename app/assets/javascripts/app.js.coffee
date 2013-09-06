@@ -8,6 +8,10 @@ app.factory "Expenditure", ["$resource", ($resource) ->
   $resource("/expenditures/:id:format", {id: "@id"}, {update: {method: "PATCH"}})
 ]
 
+app.factory "Guest", ["$resource", ($resource) ->
+  $resource("/guests/:id:format", {id: "@id"}, {update: {method: "PATCH"}})
+]
+
 app.directive('ngBlur', ['$parse', ($parse) ->
   (scope, element, attr) ->
     fn = $parse(attr['ngBlur'])

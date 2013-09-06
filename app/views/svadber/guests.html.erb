@@ -1,0 +1,48 @@
+<div ng-controller="GuestsCtrl">
+  <h1>Список гостей</h1>
+
+  <table id="guests" class="common_table">
+    <thead>
+    <tr>
+      <th class="guest-list-number" rowspan="2">№</th>
+      <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
+      <th class="guest-list-city-header" rowspan="2">Откуда</th>
+      <th class="guest-list-status-header" rowspan="2">
+        <span title="Статусы нужны для списка гостей на каравай" rel="tooltip">Статус</span></th>
+    </tr>
+    <tr>
+      <th class="guest-list-name-header">Фамилия</th>
+      <th class="guest-list-second-name-header">Имя</th>
+      <th class="guest-list-middle-name-header">Отчество</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="guest in guests">
+      <td>
+        1
+      </td>
+      <td model-attr="last_name">
+        <p class="editable-text">{{ guest.last_name }}</p>
+        <input class="hidden" type="text" placeholder="Введите фамилию" value="{{ guest.last_name }}"/>
+      </td>
+      <td model-attr="first_name">
+        <p class="editable-text">{{ guest.first_name }}</p>
+        <input class="hidden" type="text" placeholder="Введите имя" value="{{ guest.first_name }}"/>
+      </td>
+      <td model-attr="middle_name">
+        <p class="editable-text">{{ guest.middle_name }}</p>
+        <input class="hidden" type="text" placeholder="Введите отчество" value="{{ guest.middle_name }}"/>
+      </td>
+      <td model-attr="city">
+        <p class="editable-text">{{ guest.city }}</p>
+        <input class="hidden" type="text" placeholder="Введите город" value="{{ guest.city }}"/>
+      </td>
+      <td model-attr="status">
+        status
+        <i rel="tooltip" title="Удалить" class="icon-remove"></i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -10,4 +10,7 @@ class SvadberController < ApplicationController
 
   def seating
   end
+
+  def guests
+  end
 end
