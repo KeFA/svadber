@@ -4,6 +4,6 @@ class Guest < ActiveRecord::Base
   validates :wedding_id, presence: true
 
   def as_json(options = {})
-    super(except: [:created_at, :updated_at])
+    super(except: [:created_at, :updated_at, :wedding_id])
   end
 end

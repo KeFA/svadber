@@ -19,30 +19,36 @@
     <tbody>
     <tr ng-repeat="guest in guests">
       <td>
-        1
+        {{ $index + 1 }}
       </td>
-      <td model-attr="last_name">
+      <td>
         <p class="editable-text">{{ guest.last_name }}</p>
-        <input class="hidden" type="text" placeholder="Введите фамилию" value="{{ guest.last_name }}"/>
+        <input class="hidden" type="text" placeholder="Введите фамилию" ng-model="guest.last_name"
+               ng-blur="updateGuest(guest)"/>
       </td>
-      <td model-attr="first_name">
+      <td>
         <p class="editable-text">{{ guest.first_name }}</p>
-        <input class="hidden" type="text" placeholder="Введите имя" value="{{ guest.first_name }}"/>
+        <input class="hidden" type="text" placeholder="Введите имя" ng-model="guest.first_name"
+               ng-blur="updateGuest(guest)"/>
       </td>
-      <td model-attr="middle_name">
+      <td>
         <p class="editable-text">{{ guest.middle_name }}</p>
-        <input class="hidden" type="text" placeholder="Введите отчество" value="{{ guest.middle_name }}"/>
+        <input class="hidden" type="text" placeholder="Введите отчество" ng-model="guest.middle_name"
+               ng-blur="updateGuest(guest)"/>
       </td>
-      <td model-attr="city">
+      <td>
         <p class="editable-text">{{ guest.city }}</p>
-        <input class="hidden" type="text" placeholder="Введите город" value="{{ guest.city }}"/>
+        <input class="hidden" type="text" placeholder="Введите город" ng-model="guest.city"
+               ng-blur="updateGuest(guest)"/>
       </td>
-      <td model-attr="status">
-        status
-        <i rel="tooltip" title="Удалить" class="icon-remove"></i>
+      <td>
+        <p class="editable-text">{{ guest.status }}</p>
+        <input class="hidden" type="text" placeholder="Введите статус" ng-model="guest.status"
+               ng-blur="updateGuest(guest)"/>
+        <i rel="tooltip" title="Удалить" class="icon-remove" ng-click="remove(guest)"></i>
       </td>
     </tr>
     </tbody>
   </table>
-
+  <button class="btn btn-success" ng-click="addGuest()">Добавить гостя</button>
 </div>

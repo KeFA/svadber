@@ -8,13 +8,17 @@ class GuestsController < ApplicationController
     respond_with guests
   end
 
-  def new
+  def create
+    guest = guests.create
+    respond_with guest
   end
 
   def update
+    find_guest {|guest| guest.update_attributes(guest_params)}
   end
 
   def destroy
+    find_guest {|guest| guest.destroy}
   end
 
 
@@ -24,12 +28,16 @@ class GuestsController < ApplicationController
     current_user.wedding.guests
   end
 
-  def init_page_vars
-    @guests = guests.order(sort_column + ' ' + sort_order)
-    @statuses = guest_statuses
+  def find_guest
+    guest = guests.find_by_id(params[:id])
+    if guest
+      yield guest
+    end
+
+    render nothing: true
   end
 
   def guest_params
-    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status, :wedding_id)
+    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status)
   end
 end
