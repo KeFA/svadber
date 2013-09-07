@@ -4,7 +4,7 @@
   $scope.expenditures = Expenditure.query()
 
   $scope.sort =
-    column: 'description'
+    column: ''
     descending: false
 
   $scope.totalCost = ->

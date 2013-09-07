@@ -1,5 +1,4 @@
 class GuestsController < ApplicationController
-  include GuestsHelper
   before_action :authenticate_user!
 
   respond_to :json

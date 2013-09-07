@@ -18,17 +18,17 @@
         <tr ng-repeat="expenditure in expenditures | orderBy:sort.column:sort.descending">
           <input type="hidden" id="{{ expenditure.id }}" />
           <input type="hidden" class="model_name" value="expenditure"/>
-          <td model-attr="description">
+          <td>
             <p class="editable-text">{{ expenditure.description }}</p>
             <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
                    ng-blur="updateExpenditure(expenditure)">
           </td>
-          <td model-attr="cost">
+          <td>
             <p class="editable-text">{{ expenditure.cost }}</p>
             <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
                    ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
           </td>
-          <td model-attr="paid">
+          <td>
             <p class="editable-text">{{ expenditure.paid }}</p>
             <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
                    ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
