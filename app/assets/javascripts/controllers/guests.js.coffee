@@ -7,8 +7,10 @@
 
   $scope.remove = (guest) ->
     Guest.delete(id: guest.id, ->
-      $scope.guests = _.reject($scope.guests, (g) -> g.id == guest.id)
+      $scope.guests = _.reject($scope.guests, (g) ->
+        g.id == guest.id)
     )
 
   $scope.addGuest = () ->
-    Guest.save((new_guest) -> $scope.guests.push(new_guest))
+    Guest.save((new_guest) ->
+      $scope.guests.push(new_guest))

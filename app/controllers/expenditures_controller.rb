@@ -9,8 +9,7 @@ class ExpendituresController < ApplicationController
   end
 
   def create
-    expenditure = expenditures.create
-    respond_with expenditure
+    respond_with expenditures.create
   end
 
   def update
@@ -24,7 +23,7 @@ class ExpendituresController < ApplicationController
   private
 
   def expenditures
-    current_wedding.expenditures
+    current_user.wedding.expenditures
   end
 
   def find_expenditure

@@ -3,10 +3,6 @@
 
   $scope.expenditures = Expenditure.query()
 
-  $scope.sort =
-    column: ''
-    descending: false
-
   $scope.totalCost = ->
     totalCost = 0
     _.each($scope.expenditures, (exp) -> totalCost += exp.cost)
@@ -41,16 +37,3 @@
 
   $scope.updateRemainToPaid = (expenditure) ->
     expenditure.remain_to_paid = expenditure.cost - expenditure.paid
-
-  $scope.changeSortOrder = (sortColumn) ->
-    if sortColumn == $scope.sort.column
-      $scope.sort.descending = !$scope.sort.descending
-    else
-      $scope.sort.column = sortColumn
-      $scope.sort.descending = false
-
-  $scope.getColumnClass = (column) ->
-    if column == $scope.sort.column
-      "sort desc-#{$scope.sort.descending}"
-    else
-      ""

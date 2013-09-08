@@ -1,4 +1,5 @@
 class GuestsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
 
   respond_to :json
@@ -8,8 +9,7 @@ class GuestsController < ApplicationController
   end
 
   def create
-    guest = guests.create
-    respond_with guest
+    respond_with guests.create
   end
 
   def update
