@@ -1,4 +1,4 @@
-.seating-panel-chair {
+.seating-chair {
   width: 48px;
   height: 48px;
   border: 1px solid gray;
@@ -12,5 +12,8 @@
     position: relative;
     margin-top: -7px;
     margin-left: -7px;
+  }
+  .seating-chair-number {
+    @extend .seating-number;
   }
 }
