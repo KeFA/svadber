@@ -3,7 +3,7 @@
   $scope.guests = Guest.query()
 
   $scope.updateGuest = (guest) ->
-    $http.put("/guests/#{guest.id}", guest: guest)
+    $http.put("/guests/#{guest.id}", guest)
 
   $scope.remove = (guest) ->
     Guest.delete(id: guest.id, ->

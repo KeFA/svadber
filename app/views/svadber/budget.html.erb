@@ -1,15 +1,13 @@
 <div ng-controller="SortableCtrl">
   <div ng-controller="BudgetCtrl">
     <h1>Расходы</h1>
-    К оплате: <span id='budget_cost'>{{ totalCost() }}</span>
-    Уплачено: <span id="budget_paid">{{ totalPaid() }}</span>
-    Оплатить осталось: <span id="budget_to_pay">{{ totalRemainToPay() }}</span>
+    К оплате: <span id='budget_cost'>{{ totalCostValue }}</span>
+    Уплачено: <span id="budget_paid">{{ totalPaidValue }}</span>
+    Оплатить осталось: <span id="budget_to_pay">{{ totalRemainToPayValue }}</span>
     <table id="expenditures" class="common_table">
       <thead>
       <tr>
-        <th class="">
-          <a href="" ng-click="changeSortOrder('description')" ng-class="getClass('description')">Описание</a>
-        </th>
+        <th class=""><a href="" ng-click="changeSortOrder('description')" ng-class="getClass('description')">Описание</a></th>
         <th class=""><a href="" ng-click="changeSortOrder('cost')" ng-class="getClass('cost')">Сумма</a></th>
         <th class=""><a href="" ng-click="changeSortOrder('paid')" ng-class="getClass('paid')">Оплачено</a></th>
         <th class=""><a href="" ng-click="changeSortOrder('remain_to_paid')" ng-class="getClass('remain_to_paid')">Осталось</a></th>
@@ -17,25 +15,20 @@
       </thead>
       <tbody>
       <tr ng-repeat="expenditure in expenditures | orderBy:sort.column:sort.descending">
-        <input type="hidden" id="{{ expenditure.id }}" />
-        <input type="hidden" class="model_name" value="expenditure"/>
         <td>
           <p class="editable-text">{{ expenditure.description }}</p>
-          <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
-                 ng-blur="updateExpenditure(expenditure)">
+          <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description" ng-blur="updateExpenditure(expenditure)">
         </td>
         <td>
           <p class="editable-text">{{ expenditure.cost }}</p>
-          <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
-                 ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.cost" ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
           <p class="editable-text">{{ expenditure.paid }}</p>
-          <input class="hidden expenditure_money" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
-                 ng-blur="updateExpenditure(expenditure)" ng-change="updateRemainToPaid(expenditure)"/>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.paid" ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
-          <p class="remain_to_paid">{{ expenditure.remain_to_paid }}</p>
+          <p>{{ expenditure.remain_to_paid }}</p>
           <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeExpenditure(expenditure)"></i>
         </td>
       </tr>

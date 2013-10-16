@@ -3,6 +3,7 @@ class Wedding < ActiveRecord::Base
   has_many :guests, dependent: :destroy
   has_many :expenditures, dependent: :destroy
   has_many :todos, dependent: :destroy
+  has_many :cars, dependent: :destroy
 
   validates :user_id, presence: true
 

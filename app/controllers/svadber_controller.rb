@@ -13,4 +13,7 @@ class SvadberController < ApplicationController
 
   def guests
   end
+
+  def cars
+  end
 end

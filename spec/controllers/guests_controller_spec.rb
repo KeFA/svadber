@@ -10,11 +10,11 @@ describe GuestsController do
 
   describe 'creating a guest via ajax' do
     it 'should create a guest' do
-      expect { xhr :post, :new }.to change(Guest, :count).by(1)
+      expect { xhr :post, :create }.to change(Guest, :count).by(1)
     end
 
     it 'should create guest for current user' do
-      expect { xhr :post, :new }.to change(@user.wedding.guests, :count).by(1)
+      expect { xhr :post, :create }.to change(@user.wedding.guests, :count).by(1)
     end
   end
 

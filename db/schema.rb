@@ -11,22 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825202328) do
+ActiveRecord::Schema.define(version: 20131014120946) do
+
+  create_table "cars", force: true do |t|
+    t.integer  "wedding_id"
+    t.string   "driver"
+    t.string   "phone_number"
+    t.integer  "hours_count",          default: 0
+    t.integer  "cost_for_hour",        default: 0
+    t.integer  "cost_for_decorations", default: 0
+    t.integer  "paid",                 default: 0
+    t.integer  "seats_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+  end
 
   create_table "check_items", force: true do |t|
     t.string   "description"
     t.boolean  "done"
     t.integer  "wedding_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "expenditures", force: true do |t|
     t.integer  "wedding_id"
     t.integer  "cost",        default: 0
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "paid",        default: 0
   end
 
@@ -36,8 +50,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
     t.string   "middle_name"
     t.string   "city"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "wedding_id"
   end
 
@@ -64,8 +78,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -73,8 +87,8 @@ ActiveRecord::Schema.define(version: 20130825202328) do
 
   create_table "weddings", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "weddings", ["user_id"], name: "index_weddings_on_user_id"

@@ -1,0 +1,78 @@
+<div ng-controller="SortableCtrl">
+  <div ng-controller="CarsCtrl">
+    <h1>Машины</h1>
+    К оплате: <span id='budget_cost'>{{ totalCostValue }}</span>
+    Уплачено: <span id="budget_paid">{{ totalPaidValue }}</span>
+    Оплатить осталось: <span id="budget_to_pay">{{ totalRemainToPayValue }}</span>
+
+    <table class="common_table">
+      <thead>
+      <th><a href="" ng-click="changeSortOrder('description')" ng-class="getClass('description')">Описание</a></th>
+      <th><a href="" ng-click="changeSortOrder('driver')" ng-class="getClass('driver')">Водитель</a></th>
+      <th><a href="" ng-click="changeSortOrder('phone_number')" ng-class="getClass('phone_number')">Телефон</a></th>
+      <th><a href="" ng-click="changeSortOrder('cost_for_hour')" ng-class="getClass('cost_for_hour')">Стоимость за час</a></th>
+      <th><a href="" ng-click="changeSortOrder('hours_count')" ng-class="getClass('hours_count')">Кол-во часов</a></th>
+      <th><a href="" ng-click="changeSortOrder('seats_count')" ng-class="getClass('seats_count')">Кол-во мест</a></th>
+      <th><a href="" ng-click="changeSortOrder('cost_for_decorations')" ng-class="getClass('cost_for_decorations')">Стоимость декораций</a></th>
+      <th><a href="" ng-click="changeSortOrder('paid')" ng-class="getClass('paid')">Заплачено</a></th>
+
+      <th><a href="" ng-click="changeSortOrder('cost')" ng-class="getClass('cost')">Всего заплатить</a></th>
+      <th><a href="" ng-click="changeSortOrder('remain_to_pay')" ng-class="getClass('remain_to_pay')">Осталось заплатить</a></th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="car in cars | orderBy:sort.column:sort.descending">
+        <td>
+          <p class="editable-text">{{ car.description }}</p>
+          <input class="hidden" type="text" placeholder="Описание" ng-model="car.description" ng-blur="updateCar(car)">
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.driver }}</p>
+          <input class="hidden" type="text" placeholder="Водитель" ng-model="car.driver" ng-blur="updateCar(car)">
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.phone_number }}</p>
+          <input class="hidden" type="text" placeholder="Телефон" ng-model="car.phone_number" ng-blur="updateCar(car)">
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.cost_for_hour }}</p>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="car.cost_for_hour" ng-blur="updateCar(car)"/>
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.hours_count }}</p>
+          <input class="hidden" type="number" placeholder="" ng-model="car.hours_count" ng-blur="updateCar(car)"/>
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.seats_count }}</p>
+          <input class="hidden" type="number" placeholder="" ng-model="car.seats_count" ng-blur="updateCar(car)"/>
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.cost_for_decorations }}</p>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="car.cost_for_decorations" ng-blur="updateCar(car)"/>
+        </td>
+
+        <td>
+          <p class="editable-text">{{ car.paid }}</p>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="car.paid" ng-blur="updateCar(car)"/>
+        </td>
+
+        <td>
+          {{ car.cost }}
+        </td>
+
+        <td>
+          <p>{{ car.remain_to_pay }}</p>
+          <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeCar(car)"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-success" ng-click="addCar()">Добавить машину</button>
+  </div>
+</div>
+

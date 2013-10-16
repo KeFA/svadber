@@ -6,8 +6,9 @@
     <nav>
         <% if user_signed_in? %>
         <ul>
-          <li><%= link_to 'Список', todolist_path %></li>
+          <li><%= link_to 'Список задач', todolist_path %></li>
           <li><%= link_to 'Бюджет', budget_path %></li>
+          <li><%= link_to 'Машины', carslist_path %></li>
           <li><%= link_to 'Гости', guestslist_path %></li>
           <li><%= link_to 'Рассадка', seating_path %></li>
           <li><a href="overnight.html">Ночлег</a></li>

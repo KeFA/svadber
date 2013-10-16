@@ -8,6 +8,10 @@ class ExpendituresController < ApplicationController
     respond_with expenditures
   end
 
+  def show
+    respond_with expenditures.find_by_id(params[:id])
+  end
+
   def create
     respond_with expenditures.create
   end

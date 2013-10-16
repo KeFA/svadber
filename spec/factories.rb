@@ -29,4 +29,8 @@ FactoryGirl.define do
   factory :todo do
     wedding
   end
+
+  factory :car do
+    wedding
+  end
 end

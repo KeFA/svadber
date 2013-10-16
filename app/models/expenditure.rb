@@ -6,4 +6,12 @@ class Expenditure < ActiveRecord::Base
   def as_json(options = {})
     super(except: [:created_at, :updated_at, :wedding_id]).merge(remain_to_paid: cost - paid)
   end
+
+  def cost
+    read_attribute(:cost) || 0
+  end
+
+  def paid
+    read_attribute(:paid) || 0
+  end
 end
