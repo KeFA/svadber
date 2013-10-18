@@ -28,28 +28,23 @@
         </td>
         <td>
           <p class="editable-text">{{ guest.last_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите фамилию" ng-model="guest.last_name"
-                 ng-blur="updateGuest(guest)"/>
+          <input class="hidden" type="text" placeholder="Введите фамилию" ng-model="guest.last_name" ng-blur="updateGuest(guest)"/>
         </td>
         <td>
           <p class="editable-text">{{ guest.first_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите имя" ng-model="guest.first_name"
-                 ng-blur="updateGuest(guest)"/>
+          <input class="hidden" type="text" placeholder="Введите имя" ng-model="guest.first_name" ng-blur="updateGuest(guest)"/>
         </td>
         <td>
           <p class="editable-text">{{ guest.middle_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите отчество" ng-model="guest.middle_name"
-                 ng-blur="updateGuest(guest)"/>
+          <input class="hidden" type="text" placeholder="Введите отчество" ng-model="guest.middle_name" ng-blur="updateGuest(guest)"/>
         </td>
         <td>
           <p class="editable-text">{{ guest.city }}</p>
-          <input class="hidden" type="text" placeholder="Введите город" ng-model="guest.city"
-                 ng-blur="updateGuest(guest)"/>
+          <input class="hidden" type="text" placeholder="Введите город" ng-model="guest.city" ng-blur="updateGuest(guest)"/>
         </td>
         <td>
           <p class="editable-text">{{ guest.status }}</p>
-          <input class="hidden" type="text" placeholder="Введите статус" ng-model="guest.status"
-                 ng-blur="updateGuest(guest)"/>
+          <input class="hidden" type="text" placeholder="Введите статус" ng-model="guest.status" ng-blur="updateGuest(guest)"/>
           <i rel="tooltip" title="Удалить" class="icon-remove" ng-click="remove(guest)"></i>
         </td>
       </tr>

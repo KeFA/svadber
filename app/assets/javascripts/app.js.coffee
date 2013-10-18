@@ -1,4 +1,4 @@
-app = angular.module('Svadber', ['ngResource'])
+app = angular.module('Svadber', ['ngResource', 'ui.sortable'])
 
 app.factory "Todo", ["$resource", ($resource) ->
   $resource("/todos/:id:format", {id: "@id"}, {update: {method: "PATCH"}})

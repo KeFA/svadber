@@ -37,6 +37,6 @@ class GuestsController < ApplicationController
   end
 
   def guest_params
-    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status)
+    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status, :congratulate_order)
   end
 end

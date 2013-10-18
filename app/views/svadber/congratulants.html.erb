@@ -1,0 +1,8 @@
+<div ng-controller="CongratulantCtrl">
+  <ul ui-sortable="sortableOptions" ng-model="guests">
+    <li ng-repeat="guest in guests | orderBy:'congratulate_order'" style="cursor: move" class="congratulant">
+      <input type="hidden" class="guest-id" value="{{ guest.id }}"/>
+      {{ $index + 1 }} {{ guest.full_name }} ({{ guest.status }})
+    </li>
+  </ul>
+</div>

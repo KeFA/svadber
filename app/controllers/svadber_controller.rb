@@ -16,4 +16,7 @@ class SvadberController < ApplicationController
 
   def cars
   end
+
+  def congratulants
+  end
 end

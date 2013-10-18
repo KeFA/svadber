@@ -4,27 +4,28 @@
       SVADBER
     </a>
     <nav>
-        <% if user_signed_in? %>
-        <ul>
-          <li><%= link_to 'Список задач', todolist_path %></li>
-          <li><%= link_to 'Бюджет', budget_path %></li>
-          <li><%= link_to 'Машины', carslist_path %></li>
-          <li><%= link_to 'Гости', guestslist_path %></li>
-          <li><%= link_to 'Рассадка', seating_path %></li>
-          <li><a href="overnight.html">Ночлег</a></li>
-          <li><a href="cortege.html">Кортеж</a></li>
-        </ul>
+      <% if user_signed_in? %>
+          <ul>
+            <li><%= link_to 'Задачи', todolist_path %></li>
+            <li><%= link_to 'Бюджет', budget_path %></li>
+            <li><%= link_to 'Машины', carslist_path %></li>
+            <li><%= link_to 'Гости', guestslist_path %></li>
+            <li><%= link_to 'Список поздравляющих', congratulants_path %></li>
+            <li><%= link_to 'Рассадка', seating_path %></li>
+            <li><a href="overnight.html">Ночлег</a></li>
+            <li><a href="cortege.html">Кортеж</a></li>
+          </ul>
       <% end %>
       <ul class="personal-nav">
-      <% if user_signed_in? %>
-          <li><%= link_to "#{current_user.email}" %></li>
-          <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to "#{current_user.email}" %></li>
+            <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Регистрация', new_user_registration_path, id: 'registration' %></li>
-          <li><%= link_to 'Войти', new_user_session_path %></li>
-          <li><a class="icon" id="facebook" href="http://www.facebook.com/Springpad">facebook</a></li>
-          <li><a class="icon" id="twitter" href="http://www.twitter.com/Springpad">twitter</a></li>
-          <li><a class="icon" id="plus" href="https://plus.google.com/u/0/114486085924574381073">plus</a></li>
+            <li><%= link_to 'Регистрация', new_user_registration_path, id: 'registration' %></li>
+            <li><%= link_to 'Войти', new_user_session_path %></li>
+            <li><a class="icon" id="facebook" href="http://www.facebook.com/Springpad">facebook</a></li>
+            <li><a class="icon" id="twitter" href="http://www.twitter.com/Springpad">twitter</a></li>
+            <li><a class="icon" id="plus" href="https://plus.google.com/u/0/114486085924574381073">plus</a></li>
         <% end %>
       </ul>
     </nav>
