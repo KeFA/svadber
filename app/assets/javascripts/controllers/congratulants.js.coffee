@@ -12,11 +12,12 @@
     $('li.congratulant').each ->
       guest_id = $(this).find('.guest-id').val()
       guest_index = $(this).index()
-      _.each($scope.guests, (guest) ->
-        if (guest.id.toString() == guest_id)
-          guest.congratulate_order = guest_index
-          break
+
+      guest = _.find($scope.guests, (guest) ->
+        guest.id.toString() == guest_id
       )
+      guest.congratulate_order = guest_index
+
       $scope.batchRequests.push
         method: "PATCH"
         url: "/guests/#{guest_id}"
