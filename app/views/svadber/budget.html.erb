@@ -10,26 +10,30 @@
         <th class=""><a href="" ng-click="changeSortOrder('description')" ng-class="getClass('description')">Описание</a></th>
         <th class=""><a href="" ng-click="changeSortOrder('cost')" ng-class="getClass('cost')">Сумма</a></th>
         <th class=""><a href="" ng-click="changeSortOrder('paid')" ng-class="getClass('paid')">Оплачено</a></th>
-        <th class=""><a href="" ng-click="changeSortOrder('remain_to_paid')" ng-class="getClass('remain_to_paid')">Осталось</a></th>
+        <th class=""><a href="" ng-click="changeSortOrder('remain_to_pay')" ng-class="getClass('remain_to_pay')">Осталось</a></th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="expenditure in expenditures | orderBy:sort.column:sort.descending">
         <td>
           <p class="editable-text">{{ expenditure.description }}</p>
-          <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description" ng-blur="updateExpenditure(expenditure)">
+          <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
+                 ng-blur="updateExpenditure(expenditure)">
         </td>
         <td>
           <p class="editable-text">{{ expenditure.cost }}</p>
-          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.cost" ng-blur="updateExpenditure(expenditure)"/>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
+                 ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
           <p class="editable-text">{{ expenditure.paid }}</p>
-          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.paid" ng-blur="updateExpenditure(expenditure)"/>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
+                 ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
-          <p>{{ expenditure.remain_to_paid }}</p>
-          <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить" ng-click="removeExpenditure(expenditure)"></i>
+          <p>{{ expenditure.remain_to_pay }}</p>
+          <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить"
+             ng-click="removeExpenditure(expenditure)"></i>
         </td>
       </tr>
       </tbody>

@@ -5,7 +5,12 @@ class ExpendituresController < ApplicationController
   respond_to :json
 
   def index
-    respond_with expenditures
+    all_expenditures = expenditures.map { |exp| exp.as_json.merge(read_only: false, type: :expenditure) }
+    cars = current_user.wedding.cars.map do |car|
+      car.as_json(only: [:id, :description, :paid]).merge(read_only: true, type: :car)
+    end
+
+    respond_with all_expenditures.concat(cars)
   end
 
   def show
@@ -21,7 +26,7 @@ class ExpendituresController < ApplicationController
   end
 
   def destroy
-    find_expenditure {|expenditure| expenditure.destroy}
+    find_expenditure { |expenditure| expenditure.destroy }
   end
 
   private

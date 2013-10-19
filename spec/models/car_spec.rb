@@ -8,7 +8,7 @@ describe Car do
     car.as_json[:cost].should == car.cost_for_decorations + car.cost_for_hour * car.hours_count
   end
 
-  it 'should add remain_to_paid to its json' do
+  it 'should add remain_to_pay to its json' do
     car.as_json[:remain_to_pay].should == (car.cost_for_decorations + car.cost_for_hour * car.hours_count) - car.paid
   end
 end

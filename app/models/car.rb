@@ -3,7 +3,7 @@ class Car < ActiveRecord::Base
   validates :wedding_id, presence: true
 
   def as_json(options = {})
-    super(except: [:created_at, :updated_at, :wedding_id]).merge(cost: cost, remain_to_pay: remain_to_pay)
+    super(options.merge(except: [:created_at, :updated_at, :wedding_id])).merge(cost: cost, remain_to_pay: remain_to_pay)
   end
 
   def cost
