@@ -8,6 +8,10 @@ class GuestsController < ApplicationController
     respond_with guests
   end
 
+  def bed_index
+    respond_with guests.map {|g| g.as_json(only: [:id, :bed_place, :bed_cost])}
+  end
+
   def create
     respond_with guests.create
   end
@@ -37,6 +41,7 @@ class GuestsController < ApplicationController
   end
 
   def guest_params
-    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name, :status, :congratulate_order)
+    params.require(:guest).permit(:city, :first_name, :last_name, :middle_name,
+                                  :status, :congratulate_order, :bed_place, :bed_cost)
   end
 end

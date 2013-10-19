@@ -19,4 +19,7 @@ class SvadberController < ApplicationController
 
   def congratulants
   end
+
+  def bed
+  end
 end

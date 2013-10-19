@@ -14,3 +14,7 @@
   $scope.addGuest = () ->
     Guest.save((new_guest) ->
       $scope.guests.push(new_guest))
+
+  $http.get('/bed_index').success((data) ->
+    $scope.beds = data
+  )

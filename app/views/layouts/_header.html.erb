@@ -7,12 +7,12 @@
       <% if user_signed_in? %>
           <ul>
             <li><%= link_to 'Задачи', todolist_path %></li>
-            <li><%= link_to 'Бюджет', budget_path %></li>
+            <li><%= link_to 'Расходы', budget_path %></li>
             <li><%= link_to 'Машины', carslist_path %></li>
             <li><%= link_to 'Гости', guestslist_path %></li>
             <li><%= link_to 'Список поздравляющих', congratulants_path %></li>
             <li><%= link_to 'Рассадка', seating_path %></li>
-            <li><a href="overnight.html">Ночлег</a></li>
+            <li><%= link_to 'Ночлег', bed_path %></li>
             <li><a href="cortege.html">Кортеж</a></li>
           </ul>
       <% end %>

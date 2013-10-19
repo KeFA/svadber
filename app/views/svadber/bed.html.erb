@@ -1,0 +1,30 @@
+<div ng-controller="SortableCtrl">
+  <div ng-controller="GuestsCtrl">
+    <h1>Ночлег</h1>
+    <table class="common_table">
+      <thead>
+      <tr>
+        <th class=""><a href="" ng-click="changeSortOrder('full_name')" ng-class="getClass('full_name')">Имя гостя</a></th>
+        <th class=""><a href="" ng-click="changeSortOrder('bed_place')" ng-class="getClass('bed_place')">Место ночлега</a></th>
+        <th class=""><a href="" ng-click="changeSortOrder('bed_cost')" ng-class="getClass('bed_cost')">Стоимость ночлега</a></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="bed in beds | orderBy:sort.column:sort.descending">
+        <td>
+          <p>{{ bed.full_name }}</p>
+        </td>
+        <td>
+          <p class="editable-text">{{ bed.bed_place }}</p>
+          <input class="hidden" placeholder="Введите место ночлега" ng-model="bed.bed_place" ng-blur="updateGuest(bed)"/>
+        </td>
+        <td>
+          <p class="editable-text">{{ bed.bed_cost }}</p>
+          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="bed.bed_cost" ng-blur="updateGuest(bed)"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

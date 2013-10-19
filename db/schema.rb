@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017130453) do
+ActiveRecord::Schema.define(version: 20131019132133) do
 
   create_table "cars", force: true do |t|
     t.integer  "wedding_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20131017130453) do
     t.datetime "updated_at",                          null: false
     t.integer  "wedding_id"
     t.integer  "congratulate_order", default: 999999
+    t.string   "bed_place"
+    t.integer  "bed_cost"
   end
 
   add_index "guests", ["wedding_id"], name: "index_guests_on_wedding_id"
