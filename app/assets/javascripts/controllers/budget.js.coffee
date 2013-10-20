@@ -30,8 +30,8 @@
         _.each($scope.expenditures, (expenditure, i) ->
           if (expenditure.id == updatedExpenditure.id)
             $scope.expenditures[i] = updatedExpenditure
+            $scope.updatePaymentStatistic()
         )
-        $scope.updatePaymentStatistic()
       )
     )
 

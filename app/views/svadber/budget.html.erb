@@ -16,23 +16,23 @@
       <tbody>
       <tr ng-repeat="expenditure in expenditures | orderBy:sort.column:sort.descending">
         <td>
-          <p class="editable-text">{{ expenditure.description }}</p>
-          <input class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
+          <p ng-class="{'editable-text': expenditure.writable}">{{ expenditure.description }}</p>
+          <input ng-show="expenditure.writable" class="hidden" type="text" placeholder="Описание" ng-model="expenditure.description"
                  ng-blur="updateExpenditure(expenditure)">
         </td>
         <td>
-          <p class="editable-text">{{ expenditure.cost }}</p>
-          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
+          <p ng-class="{'editable-text': expenditure.writable}">{{ expenditure.cost }}</p>
+          <input ng-show="expenditure.writable" class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.cost"
                  ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
-          <p class="editable-text">{{ expenditure.paid }}</p>
-          <input class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
+          <p ng-class="{'editable-text': expenditure.writable}">{{ expenditure.paid }}</p>
+          <input ng-show="expenditure.writable" class="hidden" type="number" placeholder="Введите сумму" ng-model="expenditure.paid"
                  ng-blur="updateExpenditure(expenditure)"/>
         </td>
         <td>
           <p>{{ expenditure.remain_to_pay }}</p>
-          <i rel="tooltip" title="" class="icon-remove" data-original-title="Удалить"
+          <i ng-show="expenditure.writable" rel="tooltip" title="" class="icon-remove" data-original-title="Удалить"
              ng-click="removeExpenditure(expenditure)"></i>
         </td>
       </tr>
