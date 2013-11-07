@@ -13,10 +13,6 @@ class ExpendituresController < ApplicationController
     respond_with all_expenditures.concat(cars)
   end
 
-  def show
-    respond_with expenditures.find_by_id(params[:id]).as_json.merge(writable: true)
-  end
-
   def create
     respond_with expenditures.create
   end

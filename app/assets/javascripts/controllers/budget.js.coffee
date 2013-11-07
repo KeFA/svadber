@@ -26,13 +26,7 @@
   $scope.updateExpenditure = (expenditure) ->
 #    expenditure.$update() doesn' work: it sets content-type: application/xml but should application/json
     $http.put("/expenditures/#{expenditure.id}", expenditure).success(->
-      updatedExpenditure = Expenditure.get({id: expenditure.id}, ->
-        _.each($scope.expenditures, (expenditure, i) ->
-          if (expenditure.id == updatedExpenditure.id)
-            $scope.expenditures[i] = updatedExpenditure
-            $scope.updatePaymentStatistic()
-        )
-      )
+      $scope.updatePaymentStatistic()
     )
 
   $scope.addExpenditure = ->
