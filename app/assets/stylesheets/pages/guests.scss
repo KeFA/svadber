@@ -6,7 +6,7 @@ table.common_table {
       th{
         vertical-align: middle;
         text-align: center;
-        border: 1px solid $defaultDarkGray;
+        border: 1px solid gray;
 
         &.guest-list-number{
           width: 2%;
@@ -38,7 +38,7 @@ table.common_table {
       td{
         vertical-align: middle;
         text-align: left;
-        border: 1px solid $defaultDarkGray;
+        border: 1px solid gray;
       }
     }
   }

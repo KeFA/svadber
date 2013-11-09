@@ -107,58 +107,40 @@ var Seating = function () {
         this.getTableHeight = function () {
             return this.$id.height();
         };
-        this.getTableChairs = function () {
-            return (this.getTableWidth() / settings.drawArea.gridWidth) * 2 + (this.getTableHeight() / settings.drawArea.gridWidth) * 2;
-        };
         this.resizeTable = function () {
             console.log("dfgdfg");
         };
         this.addChairs = function () {
             var chairIndex = 1,
                 self = this;
-            new Chair(chairIndex++, this, "").init();
-            console.log(this.getTableWidth());
-            console.log(this.getTableHeight());
-
-//            var chairIndex = 1,
-//                self = this;
-//            for (var i = 0; i < this.getTableWidth() / settings.drawArea.gridWidth; i++) {
-//                var newChair = new Chair(chairIndex++, this, "");
-//                this.$id.append(newChair.chairHTML);
-//                $("#" + newChair.id).css("left", settings.drawArea.gridWidth * i);
-//                newChair.init();
-//            }
-//            for (var i = 0; i < this.getTableWidth() / settings.drawArea.gridWidth; i++) {
-//                var newChair = new Chair(chairIndex++, this, "");
-//                this.$id.append(newChair.chairHTML);
-//                $("#" + newChair.id).css("left", settings.drawArea.gridWidth * i).css("top", self.getTableHeight());
-//                newChair.init();
-//            }
-//            for (var i = 0; i < this.getTableHeight() / settings.drawArea.gridWidth; i++) {
-//                var newChair = new Chair(chairIndex++, this., "");
-//                this.$id.append(newChair.chairHTML);
-//                $("#" + newChair.id).css("left", -settings.drawArea.gridWidth).css("top", settings.drawArea.gridWidth * i);
-//                newChair.init();
-//            }
-//            for (var i = 0; i < this.getTableHeight() / settings.drawArea.gridWidth; i++) {
-//                var newChair = new Chair(chairIndex++, this, "");
-//                this.$id.append(newChair.chairHTML);
-//                $("#" + newChair.id).css("left", self.getTableWidth()).css("top", settings.drawArea.gridWidth * i);
-//                newChair.init();
-//            }
+            for (var i = 0; i < this.getTableWidth() / settings.drawArea.gridWidth; i++) {
+                new Chair(chairIndex++, this, "", settings.drawArea.gridWidth * i, -settings.drawArea.gridWidth).init();
+            }
+            for (i = 0; i < this.getTableHeight() / settings.drawArea.gridWidth; i++) {
+                new Chair(chairIndex++, this, "", self.getTableWidth(), settings.drawArea.gridWidth * i).init();
+            }
+            for (i = this.getTableWidth() / settings.drawArea.gridWidth - 1; i >= 0; i--) {
+                new Chair(chairIndex++, this, "", settings.drawArea.gridWidth * i, self.getTableHeight()).init();
+            }
+            for (i = this.getTableHeight() / settings.drawArea.gridWidth - 1; i >= 0; i--) {
+                new Chair(chairIndex++, this, "", -settings.drawArea.gridWidth, settings.drawArea.gridWidth * i).init();
+            }
         };
     }
 
-    function Chair(chairNumber, table, guest) {
+    function Chair(chairNumber, table, guest, leftPos, topPos) {
         this.chairNumber = chairNumber;
         this.tableNumber = table.tableNumber;
         this.guest = guest;
         this.id = settings.tables.htmlClass + "-" + this.tableNumber + "-" + settings.chairs.htmlClass + "-" + this.chairNumber;
         this.$id = $("#" + this.id);
+        this.leftPosition = 0 || leftPos;
+        this.topPosition = 0 || topPos;
         this.init = function () {
             this.createHTMLChair();
             this.drawChairNumber();
             this.makeDroppable();
+            this.locateChair();
         };
         this.createHTMLChair = function () {
             $(settings.htmlTags.emptyDiv).addClass(settings.chairs.htmlClass).attr("id", this.id).appendTo(table.$id);
@@ -179,6 +161,9 @@ var Seating = function () {
                     guestIcon.appendTo(seat).css("left", settings.drawArea.gridWidth / 2).css("top", settings.drawArea.gridWidth / 2).text(guestName);
                 }
             });
+        };
+        this.locateChair = function () {
+            this.$id.css("left", this.leftPosition).css("top", this.topPosition);
         };
     }
 
