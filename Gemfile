@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass'
 gem 'faker'
 
 group :development, :test do
@@ -38,3 +37,5 @@ gem 'underscore-rails'
 gem 'jquery-ui-rails'
 gem 'seed_dumper'
 gem 'russian'
+gem 'therubyracer'
+gem 'less-rails-bootstrap'

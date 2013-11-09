@@ -10,20 +10,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="holder" class="ng-cloak">
+<%= render 'layouts/header' %>
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+      try {
+          ace.settings.check('main-container', 'fixed')
+      } catch (e) {
+      }
+  </script>
 
-  <%= render 'layouts/header' %>
-  <div class="main-content">
-    <div class="container">
+  <div class="main-container-inner">
+    <a class="menu-toggler" id="menu-toggler" href="#">
+      <span class="menu-text"></span>
+    </a>
+    <%= render 'layouts/sidebar' %>
 
-      <% flash.each do |key, value| %>
+    <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
+    <% end %>
 
+    <div class="page-content ng-cloak">
       <%= yield %>
     </div>
   </div>
-  <%= render 'layouts/footer' %>
 </div>
 <%= javascript_include_tag 'application' %>
 </body>

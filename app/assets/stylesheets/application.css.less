@@ -8,21 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require jquery.editable-select.css
  *= require jquery.ui.all
+ *= require twitter/bootstrap
+ *= require ace/ace
+ *= require ace/ace-rtl
+ *= require_tree ./ace/css/
+ *= require_self
  */
-
-@import "bootstrap";
-@import "bootstrap-responsive";
-
-@import "variables";
-@import "mixins";
-@import "common";
-
-@import "common/header";
-@import "common/footer";
-
-@import "pages/guests";
-@import "pages/seating";
-

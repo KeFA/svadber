@@ -11,9 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require bootstrap
 //= require jquery.editable-select.js
 //= require underscore
+//= require ./ace/bootstrap
+//= require ./ace/ace
+//= require ./ace/ace-extra
 //= require guests
 //= require seating
 //= require tables

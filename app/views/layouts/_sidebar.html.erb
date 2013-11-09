@@ -1,0 +1,102 @@
+<div class="sidebar" id="sidebar">
+<script type="text/javascript">
+    try {
+        ace.settings.check('sidebar', 'fixed')
+    } catch (e) {
+    }
+</script>
+
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+  <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+    <button class="btn btn-success">
+      <i class="icon-signal"></i>
+    </button>
+
+    <button class="btn btn-info">
+      <i class="icon-pencil"></i>
+    </button>
+
+    <button class="btn btn-warning">
+      <i class="icon-group"></i>
+    </button>
+
+    <button class="btn btn-danger">
+      <i class="icon-cogs"></i>
+    </button>
+  </div>
+
+  <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+    <span class="btn btn-success"></span>
+
+    <span class="btn btn-info"></span>
+
+    <span class="btn btn-warning"></span>
+
+    <span class="btn btn-danger"></span>
+  </div>
+</div>
+<!-- #sidebar-shortcuts -->
+
+<ul class="nav nav-list">
+<li>
+  <%= link_to todolist_path do %>
+      <i class="icon-tasks"></i>
+      <span class="menu-text">Задачи</span>
+  <% end %>
+</li>
+<li>
+  <%= link_to budget_path do %>
+      <i class="icon-dollar"></i>
+      <span class="menu-text">Расходы</span>
+  <% end %>
+</li>
+
+<li>
+  <%= link_to carslist_path do %>
+      <i class="icon-truck"></i>
+      <span class="menu-text">Машины</span>
+  <% end %>
+</li>
+
+<li>
+  <%= link_to guestslist_path do %>
+      <i class="icon-male"><i class="icon-male"></i></i>
+      <span class="menu-text">Гости</span>
+  <% end %>
+</li>
+
+<li>
+  <%= link_to congratulants_path do %>
+      <i class="icon-group"></i>
+      <span class="menu-text">Поздравляющие</span>
+  <% end %>
+</li>
+
+<li>
+  <%= link_to seating_path do %>
+      <i class="icon-table"></i>
+      <span class="menu-text">Рассадка</span>
+  <% end %>
+</li>
+
+<li>
+  <%= link_to bed_path do %>
+      <i class="icon-moon"></i>
+      <span class="menu-text">Ночлег</span>
+  <% end %>
+</li>
+
+</ul>
+<!-- /.nav-list -->
+
+<div class="sidebar-collapse" id="sidebar-collapse">
+  <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+</div>
+
+<script type="text/javascript">
+    try {
+        ace.settings.check('sidebar', 'collapsed')
+    } catch (e) {
+    }
+</script>
+</div>
