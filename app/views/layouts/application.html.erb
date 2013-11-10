@@ -27,14 +27,19 @@
         <%= render 'layouts/sidebar' %>
     <% end %>
 
-    <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
+    <div class="main-content">
+      <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
 
-    <div class="page-content ng-cloak">
-      <%= yield %>
+      <div class="page-content ng-cloak">
+        <%= yield %>
+      </div>
     </div>
   </div>
+  <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="icon-double-angle-up icon-only bigger-110"></i>
+  </a>
 </div>
 <%= javascript_include_tag 'application' %>
 </body>

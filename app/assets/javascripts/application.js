@@ -11,11 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require jquery.editable-select.js
+//= require twitter/bootstrap
 //= require underscore
-//= require ./ace/bootstrap
-//= require ./ace/ace
-//= require ./ace/ace-extra
+//= require ace/jquery.dataTables.js
+//= require ace/ace-extra
+//= require ace/ace-elements
+//= require ace/ace
+//= require ace/jqGrid/i18n/grid.locale-ru.js
+//= require ace/jqGrid/jquery.jqGrid.src.js
 //= require guests
 //= require seating
 //= require tables
