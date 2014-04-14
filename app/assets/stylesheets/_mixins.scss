@@ -1,6 +1,6 @@
 @mixin functionBlock() {
   display: block;
-  @include border-radius($baseBorderRadius);
+  border-radius: $baseBorderRadius;
   border: $defaultGrayBorder;
   text-align: center;
   height: 200px;
