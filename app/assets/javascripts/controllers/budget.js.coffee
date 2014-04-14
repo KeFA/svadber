@@ -3,14 +3,12 @@
 
   $scope.totalCost = ->
     totalCost = 0
-    _.each($scope.expenditures, (exp) ->
-      totalCost += exp.cost)
+    _.each($scope.expenditures, (exp) -> totalCost += exp.cost)
     totalCost
 
   $scope.totalPaid = ->
     totalPaid = 0
-    _.each($scope.expenditures, (exp) ->
-      totalPaid += exp.paid)
+    _.each($scope.expenditures, (exp) -> totalPaid += exp.paid)
     totalPaid
 
   $scope.totalRemainToPay = ->
@@ -38,10 +36,6 @@
 
   $scope.removeExpenditure = (expenditure) ->
     Expenditure.remove({id: expenditure.id}, ->
-      $scope.expenditures = _.reject($scope.expenditures, (item) ->
-        item.id == expenditure.id)
+      $scope.expenditures = _.reject($scope.expenditures, (item) -> item.id == expenditure.id)
       $scope.updatePaymentStatistic()
     )
-
-  $scope.isWritable = (expenditure) ->
-    expenditure.type == 'expenditure'

@@ -11,12 +11,12 @@ $(document).ready(do_on_load);
 $(window).on('page:change', do_on_load);
 
 function init_editable_select(selector) {
-    /*$(selector).editableSelect({
+    $(selector).editableSelect({
         bg_iframe: true,
         onSelect: function () {
             updateModel(this.text, this.current_value);
         },
         case_sensitive: false,
         items_then_scroll: 10
-    });*/
+    });
 }
