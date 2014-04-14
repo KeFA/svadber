@@ -8,6 +8,8 @@ class Expenditure < ActiveRecord::Base
     super(except: [:created_at, :updated_at, :wedding_id]).merge(remain_to_pay: cost - paid, type: :expenditure)
   end
 
+  private
+
   def cost
     read_attribute(:cost) || 0
   end
@@ -16,7 +18,6 @@ class Expenditure < ActiveRecord::Base
     read_attribute(:paid) || 0
   end
 
-  private
   def set_default_values
     write_attribute(:description, '...')
   end

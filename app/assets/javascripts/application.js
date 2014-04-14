@@ -17,6 +17,8 @@
 //= require ace/ace-extra
 //= require ace/ace-elements
 //= require ace/ace
+//= require ace/jqGrid/i18n/grid.locale-ru.js
+//= require ace/jqGrid/jquery.jqGrid.src.js
 //= require guests
 //= require seating
 //= require tables
