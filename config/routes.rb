@@ -15,5 +15,4 @@ Svadber::Application.routes.draw do
   get '/carslist' => 'svadber#cars'
   get '/congratulants' => 'svadber#congratulants'
   get '/bed' => 'svadber#bed'
-
 end
