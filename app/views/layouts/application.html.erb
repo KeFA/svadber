@@ -23,9 +23,7 @@
     <a class="menu-toggler" id="menu-toggler" href="#">
       <span class="menu-text"></span>
     </a>
-    <% if user_signed_in? %>
-        <%= render 'layouts/sidebar' %>
-    <% end %>
+    <%= render 'layouts/sidebar' %>
 
     <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
