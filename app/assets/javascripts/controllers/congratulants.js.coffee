@@ -1,4 +1,4 @@
-@CongratulantCtrl = ($scope, Guest, $http) ->
+angular.module('svadber').controller('CongratulantCtrl', ['$scope', 'Guest', '$http', ($scope, Guest, $http) ->
   $http.defaults.headers.common['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content')
 
   $scope.guests = Guest.query()
@@ -25,3 +25,4 @@
 
     $.post('/batch', requests: JSON.stringify($scope.batchRequests))
     $scope.batchRequests = []
+])
