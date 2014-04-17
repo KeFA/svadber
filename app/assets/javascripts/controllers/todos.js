@@ -1,6 +1,5 @@
 angular.module('svadber').controller('TodosCtrl', ['$scope', 'Todo', '$http', function($scope, Todo, $http) {
   $http.defaults.headers.common['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content');
-  $http.defaults.headers.common["Content-Type"] = "application/json";
 
   $scope.todos = Todo.query();
 
@@ -20,8 +19,8 @@ angular.module('svadber').controller('TodosCtrl', ['$scope', 'Todo', '$http', fu
 
   $scope.removeTodo = function(id) {
     Todo.remove({id: id}, function () {
-      $scope.todos = _.reject($scope.todos, function(item) {
-        return item.id == id;
+      $scope.todos = _.reject($scope.todos, function(todo) {
+        return todo.id == id;
       })
     });
   }
