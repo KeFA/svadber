@@ -1,14 +1,16 @@
-@BudgetCtrl = ($scope, Expenditure, $http) ->
+angular.module('svadber').controller('BudgetCtrl', ['$scope', 'Expenditure', '$http', ($scope, Expenditure, $http) ->
   $http.defaults.headers.common['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content')
 
   $scope.totalCost = ->
     totalCost = 0
-    _.each($scope.expenditures, (exp) -> totalCost += exp.cost)
+    _.each($scope.expenditures, (exp) ->
+      totalCost += exp.cost)
     totalCost
 
   $scope.totalPaid = ->
     totalPaid = 0
-    _.each($scope.expenditures, (exp) -> totalPaid += exp.paid)
+    _.each($scope.expenditures, (exp) ->
+      totalPaid += exp.paid)
     totalPaid
 
   $scope.totalRemainToPay = ->
@@ -36,6 +38,8 @@
 
   $scope.removeExpenditure = (expenditure) ->
     Expenditure.remove({id: expenditure.id}, ->
-      $scope.expenditures = _.reject($scope.expenditures, (item) -> item.id == expenditure.id)
+      $scope.expenditures = _.reject($scope.expenditures, (item) ->
+        item.id == expenditure.id)
       $scope.updatePaymentStatistic()
     )
+])

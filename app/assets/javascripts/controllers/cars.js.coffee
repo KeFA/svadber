@@ -1,19 +1,22 @@
-@CarsCtrl = ($scope, Car, $http) ->
+angular.module('svadber').controller('CarsCtrl', ['$scope', 'Car', '$http', ($scope, Car, $http) ->
   $http.defaults.headers.common['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content')
 
   $scope.totalCost = ->
     totalCost = 0
-    _.each($scope.cars, (car) -> totalCost += car.cost)
+    _.each($scope.cars, (car) ->
+      totalCost += car.cost)
     totalCost
 
   $scope.totalPaid = ->
     totalPaid = 0
-    _.each($scope.cars, (car) -> totalPaid += car.paid)
+    _.each($scope.cars, (car) ->
+      totalPaid += car.paid)
     totalPaid
 
   $scope.totalRemainToPay = ->
     totalRemainToPay = 0
-    _.each($scope.cars, (car) -> totalRemainToPay += car.remain_to_pay)
+    _.each($scope.cars, (car) ->
+      totalRemainToPay += car.remain_to_pay)
     totalRemainToPay
 
   $scope.updatePaymentStatistic = ->
@@ -44,6 +47,8 @@
 
   $scope.removeCar = (car) ->
     Car.remove({id: car.id}, ->
-      $scope.cars = _.reject($scope.cars, (item) -> item.id == car.id)
+      $scope.cars = _.reject($scope.cars, (item) ->
+        item.id == car.id)
       $scope.updatePaymentStatistic()
     )
+])
