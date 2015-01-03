@@ -94,7 +94,7 @@ var Seating = function () {
                         $this.resizable({
                             grid: [settings.drawArea.gridWidth, settings.drawArea.gridWidth],
                             resize: function () {
-                                $this.resizeTable();
+//                                $this.resizeTable();
                             }
                         });
                     }
@@ -152,19 +152,39 @@ var Seating = function () {
             $(settings.htmlTags.emptyDiv).appendTo(this.$id).addClass(chairNumberClass).attr("id", chairNumberDivId).text(this.chairNumber);
         };
         this.makeDroppable = function () {
+            var self = this;
             this.$id.droppable({
                 accept: "." + settings.guests.icon.htmlClass,
                 drop: function (event, ui) {
                     var seat = this,
                         guestIcon = ui.draggable,
-                        guestName = guestIcon.data("guest");
+                        guestName = guestIcon.data("guestName");
                     guestIcon.appendTo(seat).css("left", settings.drawArea.gridWidth / 2).css("top", settings.drawArea.gridWidth / 2).text(guestName);
+                    console.log(this);
+                    self.saveGuestInfo(guestIcon.data("guestId"), self.tableNumber, self.chairNumber);
                 }
             });
         };
         this.locateChair = function () {
             this.$id.css("left", this.leftPosition).css("top", this.topPosition);
         };
+        this.saveGuestInfo = function (id, table, chair) {
+            var data = {},
+                url = window.location.href;
+            data.guestId = id;
+            data.guestTable = table;
+            data.guestChair = chair;
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data
+            });
+        };
+    }
+
+    function Guest (id, table, place) {
+
     }
 
     return {
@@ -172,5 +192,8 @@ var Seating = function () {
     }
 }();
 
-Seating.initSeating();
+$(window).load(function(){
+    Seating.initSeating();
+});
+
 

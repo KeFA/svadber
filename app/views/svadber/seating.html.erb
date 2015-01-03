@@ -8,13 +8,12 @@
 
 </div>
 
-<ul id="seating-quests-panel">
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Рудько Мария Сергеевна"></i>Рудько Мария Сергеевна</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Синкевич Алексей Викторович"></i>Синкевич Алексей Викторович</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Мисан Андрей Викторович"></i>Мисан Андрей Викторович</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Рудько Екатерина Сергеевна"></i>Рудько Екатерина Сергеевна</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Синкевич Ольга Борисовна"></i>Синкевич Ольга Борисовна</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Синкевич Виктор Семенович"></i>Синкевич Виктор Семенович</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Рудько Елена Владимировна"></i>Рудько Елена Владимировна</li>
-    <li class="ui-state-default"><i class="seating-quest-icon icon-user" data-guest="Рудько Сергей Петрович"></i>Рудько Сергей Петрович</li>
-</ul>
+<div id="seating-panel">
+    <ul id="seating-quests-panel" ng-controller="GuestsCtrl">
+        <li ng-repeat="guest in guests" class="ui-state-default">
+            <i class="seating-quest-icon icon-user" data-guest-name="{{ guest.last_name }} {{ guest.first_name }}"
+               data-guest-id="{{ guest.id }}"></i>
+            {{ guest.last_name }} {{ guest.first_name }}
+        </li>
+    </ul>
+</div>
