@@ -1,3 +1,22 @@
+@mixin mediaTablet {
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin mediaMobileTablet {
+  @media only screen and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin mediaMobile {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+
 @mixin functionBlock() {
   display: block;
   border-radius: 1px solid $defaultGrayBorder;

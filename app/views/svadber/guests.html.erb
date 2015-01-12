@@ -1,55 +1,57 @@
 <div ng-controller="SortableCtrl">
-  <div ng-controller="GuestsCtrl">
-    <h1>Список гостей</h1>
+    <div ng-controller="GuestsCtrl">
+        <h1>Список гостей</h1>
 
-    <table id="guests" class="common_table">
-      <thead>
-      <tr>
-        <th class="guest-list-number" rowspan="2">№</th>
-        <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
-        <th class="guest-list-city-header" rowspan="2">
-          <a href="" ng-click="changeSortOrder('city')" ng-class="getClass('city')">Откуда</a>
-        </th>
-        <th class="guest-list-status-header" rowspan="2">
-          <a href="" ng-click="changeSortOrder('status')" ng-class="getClass('status')">Статус</a>
-      </tr>
-      <tr>
-        <th class="guest-list-name-header">
-          <a href="" ng-click="changeSortOrder('last_name')" ng-class="getClass('last_name')">Фамилия</a>
-        </th>
-        <th class="guest-list-second-name-header">Имя</th>
-        <th class="guest-list-middle-name-header">Отчество</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="guest in guests|orderBy:sort.column:sort.descending">
-        <td>
-          {{ $index + 1 }}
-        </td>
-        <td>
-          <p class="editable-text">{{ guest.last_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите фамилию" ng-model="guest.last_name" ng-blur="updateGuest(guest)"/>
-        </td>
-        <td>
-          <p class="editable-text">{{ guest.first_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите имя" ng-model="guest.first_name" ng-blur="updateGuest(guest)"/>
-        </td>
-        <td>
-          <p class="editable-text">{{ guest.middle_name }}</p>
-          <input class="hidden" type="text" placeholder="Введите отчество" ng-model="guest.middle_name" ng-blur="updateGuest(guest)"/>
-        </td>
-        <td>
-          <p class="editable-text">{{ guest.city }}</p>
-          <input class="hidden" type="text" placeholder="Введите город" ng-model="guest.city" ng-blur="updateGuest(guest)"/>
-        </td>
-        <td>
-          <p class="editable-text">{{ guest.status }}</p>
-          <input class="hidden" type="text" placeholder="Введите статус" ng-model="guest.status" ng-blur="updateGuest(guest)"/>
-          <i rel="tooltip" title="Удалить" class="icon-remove" ng-click="remove(guest)"></i>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-success" ng-click="addGuest()">Добавить гостя</button>
-  </div>
+        <table id="guests">
+            <thead>
+            <tr>
+                <th class="guest-list-number" rowspan="2">№</th>
+                <th class="guest-list-full-name-header" colspan="3">Полное имя гостя</th>
+                <th class="guest-list-city-header" rowspan="2">
+                    <a href="" ng-click="changeSortOrder('city')" ng-class="getClass('city')">Откуда</a>
+                </th>
+                <th class="guest-list-status-header" rowspan="2">
+                    <a href="" ng-click="changeSortOrder('status')" ng-class="getClass('status')">Статус</a>
+            </tr>
+            <tr>
+                <th class="guest-list-name-header">
+                    <a href="" ng-click="changeSortOrder('last_name')" ng-class="getClass('last_name')">Фамилия</a>
+                </th>
+                <th class="guest-list-second-name-header">Имя</th>
+                <th class="guest-list-middle-name-header">Отчество</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="guest in guests|orderBy:sort.column:sort.descending">
+                <td>
+                    {{ $index + 1 }}
+                </td>
+                <td>
+                    <p class="editable-text">{{ guest.last_name }}</p>
+                    <input class="hidden" type="text" placeholder="Введите фамилию" ng-model="guest.last_name" ng-blur="updateGuest(guest)"/>
+                </td>
+                <td>
+                    <p class="editable-text">{{ guest.first_name }}</p>
+                    <input class="hidden" type="text" placeholder="Введите имя" ng-model="guest.first_name" ng-blur="updateGuest(guest)"/>
+                </td>
+                <td>
+                    <p class="editable-text">
+                        {{ guest.middle_name }}<span class="visible-phone">.</span>
+                    </p>
+                    <input class="hidden" type="text" placeholder="Введите отчество" ng-model="guest.middle_name" ng-blur="updateGuest(guest)"/>
+                </td>
+                <td>
+                    <p class="editable-text"><span class="visible-phone">Город:</span>{{ guest.city }}<span class="visible-phone">.</span></p>
+                    <input class="hidden" type="text" placeholder="Введите город" ng-model="guest.city" ng-blur="updateGuest(guest)"/>
+                </td>
+                <td>
+                    <p class="editable-text"><span class="visible-phone">Статус:</span>{{ guest.status }}<span class="visible-phone">.</span></p>
+                    <input class="hidden" type="text" placeholder="Введите статус" ng-model="guest.status" ng-blur="updateGuest(guest)"/>
+                    <i rel="tooltip" title="Удалить" class="icon-remove" ng-click="remove(guest)"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-success" ng-click="addGuest()">Добавить гостя</button>
+    </div>
 </div>

@@ -2,6 +2,7 @@
 <html ng-app="svadber">
 <head>
   <title>Svadber</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'jquery' %>
   <%= javascript_include_tag 'jquery.ui.all' %>
@@ -9,7 +10,7 @@
   <%= javascript_include_tag 'angular-resource' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="no-touch">
 <div id="holder" class="ng-cloak">
 
   <%= render 'layouts/header' %>

@@ -24,11 +24,12 @@ a {
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
 input {
   @include box-sizing(border-box);
-  &.hidden {
-    display: none !important;
-  }
 }
 
 textarea:focus,
@@ -94,6 +95,28 @@ table {
         background-image: url(/assets/down_arrow.gif)
       }
     }
+  }
+}
+
+.visible-phone {
+  display: none !important;
+}
+
+@include mediaTablet {
+  .hidden-tablet {
+    display: none !important;
+  }
+  .visible-phone {
+    display: none !important;
+  }
+}
+
+@include mediaMobile {
+  .hidden-phone {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
   }
 }
 
